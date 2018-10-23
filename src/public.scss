@@ -1,0 +1,194 @@
+// 改element-ui
+.el-header, .el-main, .el-footer {
+  padding: 0;
+}
+
+// 改element-ui结束
+
+// 公用
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.img {
+  display: inline-block;
+}
+
+.vab {
+  vertical-align: bottom;
+}
+
+.vam {
+  vertical-align: middle;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.dib {
+  display: inline-block;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.wrap-box {
+  width: 1290px;
+  margin: 0 auto;
+}
+
+// 公用结束
+
+// 色彩相关
+.cBlu {
+  color: #409eff;
+}
+
+.cBla {
+  color: #303133;
+}
+
+.cGra {
+  color: #606266;
+}
+
+.cGre {
+  color: #67c23a;
+}
+
+.cYel {
+  color: #e6a23c;
+}
+
+.cRed {
+  color: #f56c6c;
+}
+
+.bgcWhi {
+  background-color: #ffffff;
+}
+
+.bgcGra {
+  background-color: #f7f7f7;
+}
+
+.bgcGre {
+  background-color: #67c23a;
+}
+
+// 色彩相关结束
+
+// 字体相关
+.fb {
+  font-weight: bold;
+}
+
+.fz12 {
+  font-size: 12px;
+}
+
+.fz14 {
+  font-size: 14px;
+}
+
+.fz16 {
+  font-size: 16px;
+}
+
+.fz20 {
+  font-size: 20px;
+}
+
+.lh43 {
+  line-height: 43px;
+}
+
+.lh70 {
+  line-height: 70px;
+}
+
+// 字体相关结束
+
+// 元素间距相关
+// 填充
+
+// 填充结束
+// 边框
+.br2 {
+  border-radius: 2px;
+}
+
+// 边框结束
+// 间距
+.m5 {
+  margin: 5px;
+}
+// 间距结束
+// 上间距
+.mt3 {
+  margin-top: 3px;
+}
+
+.mt20 {
+  margin-top: 20px;
+}
+
+.mt42 {
+  margin-top: 42px;
+}
+
+.mt50 {
+  margin-top: 50px;
+}
+
+.mt65 {
+  margin-top: 65px;
+}
+
+// 上间距结束
+
+// 下间距
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+// 下间距结束
+
+// 左间距
+
+// 左间距结束
+
+//  右间距
+.mr5 {
+  margin-right: 5px;
+}
+
+.mr10 {
+  margin-right: 10px;
+}
+
+.mr80 {
+  margin-right: 80px;
+}
+
+// 右间距结束
+
+// 元素间距相关结束
+
+

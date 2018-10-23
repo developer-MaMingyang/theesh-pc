@@ -1,0 +1,31 @@
+.sidebar {
+  width: 235px;
+  .container {
+    .link-wrap {
+      margin-left: -8px;
+      .little-link {
+        padding: 2px 8px;
+        color: #303133;
+        transition: all .3s;
+        &:hover {
+          background-color: #67c23a;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.icon-before {
+  width: 4px;
+  height: 17px;
+  background-image: linear-gradient(-179deg, #FAC700 0%, #F49600 100%);
+}
+
+.course-wrap {
+  margin-bottom: 160px;
+  .course {
+    width: 973px;
+    height: 186px;
+  }
+}

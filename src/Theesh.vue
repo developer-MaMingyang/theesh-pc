@@ -1,14 +1,24 @@
 <template>
-  <div id="theesh">
+  <el-container direction="vertical">
+    <Header/>
     <router-view/>
-  </div>
+    <Footer/>
+  </el-container>
 </template>
 
 <script>
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 export default {
-  name: 'Theesh'
+  name: 'Theesh',
+  components: {
+    Header,
+    Footer
+  }
 }
 </script>
 
 <style lang="scss">
+  @import "./public";
 </style>
