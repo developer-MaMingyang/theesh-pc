@@ -11,14 +11,11 @@
 </template>
 
 <script>
-import Sidebar from './components/Sidebar'
-import Main from './components/Main'
-
 export default {
   name: 'Home',
   components: {
-    Sidebar,
-    Main
+    Sidebar: () => import('./components/SideBar'),
+    Main: () => import('./components/Main')
   },
   data () {
     return {}

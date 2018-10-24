@@ -16,11 +16,12 @@
         <router-link class="cBla" to="/">知识库</router-link>
       </nav>
       <div class="fr fz16 lh70 account-wrap">
-        <router-link class="cBla m5" to="/">登录</router-link>
+        <span class="m5 cp" @click="dialog.login=true">登录</span>
         <span>|</span>
-        <router-link class="cBla m5" to="/">注册</router-link>
+        <span class="m5 cp">注册</span>
       </div>
     </div>
+    <Login :show="dialog.login" @closeModal="closeModal"/>
   </el-header>
 </template>
 
@@ -29,14 +30,24 @@ import logo from '../../assets/img/public/logo-top.png'
 
 export default {
   name: 'Header',
+  components: {
+    Login: () => import('../Login')
+  },
   data () {
     return {
+      dialog: {
+        login: false
+      },
       img: {
         logo
       }
     }
   },
-  methods: {},
+  methods: {
+    closeModal (name) {
+      this.dialog[name] = false
+    }
+  },
   created () {
 
   }
