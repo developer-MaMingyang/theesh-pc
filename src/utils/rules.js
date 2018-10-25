@@ -27,10 +27,24 @@ export const checkPwd = (rule, value, callback) => {
   callback()
 }
 
-// 校验用户名
-export const checkUserName = (rule, value, callback) => {
+// 校验图形验证码：4位中英文数字
+export const checkImgVc = (rule, value, callback) => {
   if (value === '') {
-    callback(new Error('请输入用户名'))
+    callback(new Error('请输入图形验证码'))
+  }
+  if (!/^[a-zA-Z0-9]{4}$/.test(value)) {
+    callback(new Error('请输入正确的图形验证码'))
+  }
+  callback()
+}
+
+// 校验短信验证码：6位纯数字
+export const checkMsgVc = (rule, value, callback) => {
+  if (value === '') {
+    callback(new Error('请输入短信验证码'))
+  }
+  if (!/^[0-9]{6}$/.test(value)) {
+    callback(new Error('请输入正确的短信验证码'))
   }
   callback()
 }

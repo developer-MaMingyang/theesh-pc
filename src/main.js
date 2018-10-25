@@ -2,6 +2,7 @@ import Vue from 'vue'
 import 'normalize.css'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'vue2-animate/dist/vue2-animate.min.css'
 import Theesh from './Theesh'
 import router from './router'
 Vue.use(ElementUI)

@@ -4,7 +4,7 @@
 */
 
 <template>
-  <el-dialog custom-class="w500" center title="登陆知视" :visible.sync="isShow" @close="$emit('closeModal', 'login')">
+  <el-dialog custom-class="w500" center title="登陆知视" :visible.sync="isShow" @close="$emit('closeModal', 'login')" :close-on-click-modal="false" :close-on-press-escape="false">
     <el-form class="w300 center" ref="login" :model="login" :rules="rules" label-position="left">
       <el-form-item label="手机号" prop="phone" label-width="60px">
         <el-input maxlength="13" autocomplete="off" v-model="login.phone"></el-input>

@@ -4,7 +4,7 @@
 */
 
 <template>
-  <div class="fl mr80 sidebar">
+  <div class="sidebar">
     <el-card class="container bgcWhi mb20" shadow="hover" v-for="(item, index) in list" :key="index">
       <div class="fz16 mb10">
         <img class="vab" :src="item.icon">
@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import iconMusic from '../../../assets/img/index/icon-music.png'
-import iconSport from '../../../assets/img/index/icon-sports.png'
+import iconMusic from '../../assets/img/index/icon-music.png'
+import iconSport from '../../assets/img/index/icon-sports.png'
 
 export default {
-  name: 'Sidebar',
+  name: 'SideBar',
   data () {
     return {
       list: [{
@@ -78,5 +78,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../styles";
+@import "../../views/Home/styles";
 </style>
