@@ -14,18 +14,18 @@
 export default {
   name: 'TitleBar',
   props: ['title'],
-  data () {
+  data() {
     return {
 
-    }
+    };
   },
   methods: {
 
   },
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

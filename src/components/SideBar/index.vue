@@ -20,61 +20,61 @@
 </template>
 
 <script>
-import iconMusic from '../../assets/img/index/icon-music.png'
-import iconSport from '../../assets/img/index/icon-sports.png'
+import iconMusic from '../../assets/img/index/icon-music.png';
+import iconSport from '../../assets/img/index/icon-sports.png';
 
 export default {
   name: 'SideBar',
-  data () {
+  data() {
     return {
       list: [{
-        'id': 0,
-        'level': 1,
-        'name': '体育',
-        'icon': iconSport,
-        'parentId': 0,
-        'categoryList': [
+        id: 0,
+        level: 1,
+        name: '体育',
+        icon: iconSport,
+        parentId: 0,
+        categoryList: [
           {
-            'id': 0,
-            'level': 2,
-            'name': '足球',
-            'parentId': 0,
-            'categoryList': null
+            id: 0,
+            level: 2,
+            name: '足球',
+            parentId: 0,
+            categoryList: null,
           }, {
-            'id': 0,
-            'level': 2,
-            'name': '篮球',
-            'parentId': 0,
-            'categoryList': null
-          }]
+            id: 0,
+            level: 2,
+            name: '篮球',
+            parentId: 0,
+            categoryList: null,
+          }],
       }, {
-        'id': 0,
-        'level': 1,
-        'name': '音乐',
-        'icon': iconMusic,
-        'parentId': 0,
-        'categoryList': [
+        id: 0,
+        level: 1,
+        name: '音乐',
+        icon: iconMusic,
+        parentId: 0,
+        categoryList: [
           {
-            'id': 0,
-            'level': 2,
-            'name': '钢琴',
-            'parentId': 0,
-            'categoryList': null
+            id: 0,
+            level: 2,
+            name: '钢琴',
+            parentId: 0,
+            categoryList: null,
           }, {
-            'id': 0,
-            'level': 2,
-            'name': '吉他',
-            'parentId': 0,
-            'categoryList': null
-          }]
-      }]
-    }
+            id: 0,
+            level: 2,
+            name: '吉他',
+            parentId: 0,
+            categoryList: null,
+          }],
+      }],
+    };
   },
   methods: {},
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

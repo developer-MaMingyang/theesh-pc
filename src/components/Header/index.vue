@@ -27,34 +27,34 @@
 </template>
 
 <script>
-import logo from '../../assets/img/public/logo-top.png'
+import logo from '../../assets/img/public/logo-top.png';
 
 export default {
   name: 'Header',
   components: {
     Login: () => import('../Login'),
-    Register: () => import('../Register')
+    Register: () => import('../Register'),
   },
-  data () {
+  data() {
     return {
       dialog: {
         login: false,
-        register: false
+        register: false,
       },
       img: {
-        logo
-      }
-    }
+        logo,
+      },
+    };
   },
   methods: {
-    closeModal (name) {
-      this.dialog[name] = false
-    }
+    closeModal(name) {
+      this.dialog[name] = false;
+    },
   },
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

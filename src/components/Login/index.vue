@@ -4,7 +4,15 @@
 */
 
 <template>
-  <el-dialog custom-class="w500" center title="登陆知视" :visible.sync="isShow" @close="$emit('closeModal', 'login')" :close-on-click-modal="false" :close-on-press-escape="false">
+  <el-dialog
+    custom-class="w500"
+    center
+    title="登陆知视"
+    :visible.sync="isShow"
+    @close="$emit('closeModal', 'login')"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
+  >
     <el-form class="w300 center" ref="login" :model="login" :rules="rules" label-position="left">
       <el-form-item label="手机号" prop="phone" label-width="60px">
         <el-input maxlength="13" autocomplete="off" v-model="login.phone"></el-input>
@@ -18,43 +26,43 @@
 </template>
 
 <script>
-import {MessageBox} from 'element-ui'
-import {checkPhone, checkPwd} from '../../utils/rules'
+import { MessageBox } from 'element-ui';
+import { checkPhone, checkPwd } from '../../utils/rules';
 
 export default {
   name: 'Login',
   props: ['show'],
   watch: {
-    'show' (nv) {
-      this.isShow = nv
-    }
+    show(nv) {
+      this.isShow = nv;
+    },
   },
-  data () {
+  data() {
     return {
       isShow: false,
       rules: {
-        phone: [{validator: checkPhone, trigger: 'blur'}],
-        pwd: [{validator: checkPwd, trigger: 'blur'}]
+        phone: [{ validator: checkPhone, trigger: 'blur' }],
+        pwd: [{ validator: checkPwd, trigger: 'blur' }],
       },
       login: {
         phone: '',
-        pwd: ''
-      }
-    }
+        pwd: '',
+      },
+    };
   },
   methods: {
-    doLogin () {
-      this.$refs['login'].validate((valid) => {
+    doLogin() {
+      this.$refs.login.validate((valid) => {
         if (valid) {
-          MessageBox.alert('已通过校验', '提示').catch(() => {})
+          MessageBox.alert('已通过校验', '提示').catch(() => {});
         }
-      })
-    }
+      });
+    },
   },
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

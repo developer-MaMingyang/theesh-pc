@@ -29,24 +29,24 @@
 </template>
 
 <script>
-import qrCode from '../../assets/img/public/qr-code1.png'
+import qrCode from '../../assets/img/public/qr-code1.png';
 
 export default {
   name: 'Footer',
-  data () {
+  data() {
     return {
       img: {
-        qrCode
-      }
-    }
+        qrCode,
+      },
+    };
   },
   methods: {
 
   },
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

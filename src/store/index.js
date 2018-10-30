@@ -3,21 +3,21 @@
 * date: 2018/10/25
 */
 
-import Vue from 'vue'
-import vuex from 'vuex'
-import actions from './actions'
-import mutations from './mutations'
+import Vue from 'vue';
+import vuex from 'vuex';
+import actions from './actions';
+import mutations from './mutations';
 
-Vue.use(vuex)
+Vue.use(vuex);
 
 const state = {
 
-}
+};
 
 const store = new vuex.Store({
   state,
   actions,
-  mutations
-})
+  mutations,
+});
 
-export default store
+export default store;

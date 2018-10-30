@@ -39,32 +39,32 @@
 export default {
   name: 'Main',
   components: {
-    TitleBar: () => import('../../../components/TitleBar/index')
+    TitleBar: () => import('../../../components/TitleBar/index'),
   },
-  data () {
+  data() {
     return {
       show0: false,
       show1: false,
-      show2: false
-    }
+      show2: false,
+    };
   },
   methods: {
-    initAnimate () {
+    initAnimate() {
       setTimeout(() => {
-        this.show0 = true
+        this.show0 = true;
         setTimeout(() => {
-          this.show1 = true
+          this.show1 = true;
           setTimeout(() => {
-            this.show2 = true
-          }, 500)
-        }, 500)
-      }, 500)
-    }
+            this.show2 = true;
+          }, 500);
+        }, 500);
+      }, 500);
+    },
   },
-  created () {
-    this.initAnimate()
-  }
-}
+  created() {
+    this.initAnimate();
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -4,8 +4,17 @@
 */
 
 <template>
-  <el-dialog custom-class="w500" center title="注册知视" :visible.sync="isShow" @close="$emit('closeModal', 'register')" :close-on-click-modal="false" :close-on-press-escape="false">
-    <el-form class="w300 center" ref="register" :model="register" :rules="rules" label-position="left">
+  <el-dialog
+    custom-class="w500"
+    center
+    title="注册知视"
+    :visible.sync="isShow"
+    @close="$emit('closeModal', 'register')"
+    :close-on-click-modal="false"
+    :close-on-press-escape="false"
+  >
+    <el-form
+      class="w300 center" ref="register" :model="register" :rules="rules" label-position="left">
       <el-form-item label="手机号" prop="phone" label-width="60px">
         <el-input maxlength="13" autocomplete="off" v-model="register.phone"></el-input>
       </el-form-item>
@@ -22,52 +31,52 @@
 </template>
 
 <script>
-import {MessageBox} from 'element-ui'
-import {checkPhone, checkMsgVc, checkPwd} from '../../utils/rules'
+import { MessageBox } from 'element-ui';
+import { checkPhone, checkMsgVc, checkPwd } from '../../utils/rules';
 
 export default {
   name: 'Register',
   props: ['show'],
   components: {
-    VerifyCode: () => import('../VerifyCode')
+    VerifyCode: () => import('../VerifyCode'),
   },
   watch: {
-    'show' (nv) {
-      this.isShow = nv
-    }
+    show(nv) {
+      this.isShow = nv;
+    },
   },
-  data () {
+  data() {
     return {
       isShow: false,
       rules: {
-        phone: [{validator: checkPhone, trigger: 'blur'}],
-        msgVc: [{validator: checkMsgVc, trigger: 'blur'}],
-        pwd: [{validator: checkPwd, trigger: 'blur'}]
+        phone: [{ validator: checkPhone, trigger: 'blur' }],
+        msgVc: [{ validator: checkMsgVc, trigger: 'blur' }],
+        pwd: [{ validator: checkPwd, trigger: 'blur' }],
       },
       register: {
         phone: '',
         msgVc: '',
-        pwd: ''
+        pwd: '',
       },
-      imgVc: ''
-    }
+      imgVc: '',
+    };
   },
   methods: {
-    doRegister () {
-      this.$refs['register'].validate((valid) => {
+    doRegister() {
+      this.$refs.register.validate((valid) => {
         if (valid) {
-          MessageBox.alert('已通过校验', '提示').catch(() => {})
+          MessageBox.alert('已通过校验', '提示').catch(() => {});
         }
-      })
+      });
     },
-    refreshImgVc () {
-      this.imgVc = `https://8.baofeng.com/mimosa/client/captcha/getimgvc?t=${new Date().getTime()}`
-    }
+    refreshImgVc() {
+      this.imgVc = `https://8.baofeng.com/mimosa/client/captcha/getimgvc?t=${new Date().getTime()}`;
+    },
   },
-  created () {
-    this.refreshImgVc()
-  }
-}
+  created() {
+    this.refreshImgVc();
+  },
+};
 </script>
 
 <style lang="scss" scoped>

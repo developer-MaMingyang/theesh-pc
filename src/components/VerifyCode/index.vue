@@ -22,52 +22,52 @@
 export default {
   name: 'VerifyCode',
   props: ['type', 'phone', 'disableBtn', 'np'],
-  data () {
+  data() {
     return {
       text: '获取验证码',
-      sending: false
-    }
+      sending: false,
+    };
   },
   methods: {
-    countDown () {
+    countDown() {
       // 校验是否重复点击
       if (this.sending) {
-        return
+        return;
       }
       // 结束
       // 校验手机号位数
       if (this.phone && this.phone.length !== 11) {
-        return
+        return;
       }
       // 结束
       // 校验必要参数是否存在
       if (this.np && this.np.length) {
         for (let i = 0; i < this.np.length; i++) {
           if (!this[this.np[i]]) {
-            return
+            return;
           }
         }
       }
       // 结束
-      this.sending = true
+      this.sending = true;
       this.$message({
         type: 'success',
-        message: '验证码已发放，请注意查收'
-      })
-      let time = 120
-      this.text = `重新获取(${time})`
+        message: '验证码已发放，请注意查收',
+      });
+      let time = 120;
+      this.text = `重新获取(${time})`;
       const j = setInterval(() => {
         if (time > 0) {
-          this.text = `重新获取(${time--})`
+          this.text = `重新获取(${time--})`;
         } else {
-          this.text = '获取验证码'
-          this.sending = false
-          clearInterval(j)
+          this.text = '获取验证码';
+          this.sending = false;
+          clearInterval(j);
         }
-      }, 1000)
-    }
-  }
-}
+      }, 1000);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped="scoped">

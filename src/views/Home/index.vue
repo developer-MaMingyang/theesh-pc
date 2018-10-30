@@ -15,16 +15,16 @@ export default {
   name: 'Home',
   components: {
     SideBar: () => import('../../components/SideBar'),
-    Main: () => import('./components/Main')
+    Main: () => import('./components/Main'),
   },
-  data () {
-    return {}
+  data() {
+    return {};
   },
   methods: {},
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

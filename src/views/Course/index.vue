@@ -17,20 +17,20 @@ export default {
   name: 'Course',
   components: {
     SideBar: () => import('../../components/SideBar'),
-    TitleBar: () => import('../../components/TitleBar')
+    TitleBar: () => import('../../components/TitleBar'),
   },
-  data () {
+  data() {
     return {
 
-    }
+    };
   },
   methods: {
 
   },
-  created () {
+  created() {
 
-  }
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>
