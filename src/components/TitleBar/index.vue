@@ -1,6 +1,7 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/22
+* usage: 首页，产品列表页标题栏
 */
 
 <template>
@@ -29,6 +30,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "../../views/Home/styles";
-
+  @import "./styles";
 </style>

@@ -3,9 +3,17 @@
   padding: 0;
 }
 
+.el-card__body {
+  padding: 0;
+}
+
 // 改element-ui结束
 
 // 公用
+body {
+  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
+}
+
 a {
   text-decoration: none;
 }
@@ -169,7 +177,9 @@ img {
 
 // 元素间距相关
 // 填充
-
+.p20 {
+  padding: 20px;
+}
 // 填充结束
 // 边框
 .br2 {

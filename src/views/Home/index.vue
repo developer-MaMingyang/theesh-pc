@@ -1,12 +1,13 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/22
+* usage: 首页
 */
 
 <template>
   <div class="wrap-box mt42 df">
     <SideBar/>
-    <Main/>
+    <CourseContainer/>
   </div>
 </template>
 
@@ -15,7 +16,7 @@ export default {
   name: 'Home',
   components: {
     SideBar: () => import('../../components/SideBar'),
-    Main: () => import('./components/Main'),
+    CourseContainer: () => import('./components/CourseContainer'),
   },
   data() {
     return {};

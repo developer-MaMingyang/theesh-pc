@@ -1,3 +1,4 @@
+/* eslint-disable */
 import Vue from 'vue';
 import Router from 'vue-router';
 
@@ -7,11 +8,23 @@ const router = new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
       component: () => import('@/views/Home'),
     },
     {
-      path: '/course',
-      component: () => import('@/views/Course'),
+      path: '/course/list',
+      name: 'CourseList',
+      component: () => import('@/views/CourseList'),
+    },
+    {
+      path: '/course/detail/:id',
+      name: 'CourseDetail',
+      component: () => import('@/views/CourseDetail'),
+    },
+    {
+      path: '/play/:id',
+      name: 'Play',
+      component: () => import('@/views/Play'),
     },
   ],
 });

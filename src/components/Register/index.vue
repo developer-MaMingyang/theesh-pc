@@ -1,6 +1,7 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/25
+* usage: 注册浮窗
 */
 
 <template>
@@ -80,5 +81,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import "./style";
+  @import "./styles";
 </style>

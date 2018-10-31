@@ -1,11 +1,12 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/22
+* usage: 全局侧边栏
 */
 
 <template>
   <div class="sidebar">
-    <el-card class="container bgcWhi mb20" shadow="hover" v-for="(item, index) in list" :key="index">
+    <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
       <div class="fz16 mb10">
         <img class="vab" :src="item.icon">
         <span>{{item.name}}</span>
@@ -78,5 +79,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "../../views/Home/styles";
+@import "./styles";
 </style>

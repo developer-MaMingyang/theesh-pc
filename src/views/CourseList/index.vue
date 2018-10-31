@@ -1,23 +1,22 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/25
+* usage: 课程列表页
 */
 
 <template>
   <div class="wrap-box mt42 df">
     <SideBar/>
-    <div class="wrapper">
-      <TitleBar title="产品教程"/>
-    </div>
+    <CourseContainer />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Course',
+  name: 'CourseList',
   components: {
     SideBar: () => import('../../components/SideBar'),
-    TitleBar: () => import('../../components/TitleBar'),
+    CourseContainer: () => import('./components/CourseContainer'),
   },
   data() {
     return {
@@ -34,5 +33,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  @import url(./style.scss);
+  @import "./styles";
 </style>

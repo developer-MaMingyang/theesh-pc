@@ -1,6 +1,7 @@
 /*
 * author: mamingyang@baofeng.com
 * date: 2018/10/22
+* usage: 全局footer
 */
 
 <template>
