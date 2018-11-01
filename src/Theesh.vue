@@ -38,5 +38,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import "./public";
+  @import "reset";
 </style>

@@ -7,12 +7,11 @@
 import { Message } from 'element-ui';
 
 // checkErrorCode: ajax全局校验码
-export const checkErrorCode = ({ errorCode, errorMessage }, ignore) => {
-  if (!errorCode || errorCode === ignore) {
-    Message.success('已经成功进行了一个请求');
+export const checkErrorCode = ({ code, message }, ignore) => {
+  if (!code || code === ignore) {
     return true;
   }
-  Message.error(`${errorMessage}(${errorCode})`);
+  Message.error(`${message}(${code})`);
   return false;
 };
 // checkErrorCode结束

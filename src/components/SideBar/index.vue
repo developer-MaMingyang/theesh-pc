@@ -9,11 +9,11 @@
     <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
       <div class="fz16 mb10">
         <img class="vab" :src="item.icon">
-        <span>{{item.name}}</span>
+        <span>{{item.chnName}}</span>
       </div>
       <div class="link-wrap">
         <router-link class="little-link br2 mr5" v-for="(link, idx) in item.categoryList" :key="idx" to="/">
-          {{link.name}}
+          {{link.chnName}}
         </router-link>
       </div>
     </el-card>
@@ -23,6 +23,7 @@
 <script>
 import iconMusic from '../../assets/img/index/icon-music.png';
 import iconSport from '../../assets/img/index/icon-sports.png';
+import { getSidebarList } from '../../service/sidebar';
 
 export default {
   name: 'SideBar',
@@ -31,49 +32,44 @@ export default {
       list: [{
         id: 0,
         level: 1,
-        name: '体育',
+        chnName: '体育',
         icon: iconSport,
-        parentId: 0,
         categoryList: [
           {
             id: 0,
             level: 2,
-            name: '足球',
-            parentId: 0,
-            categoryList: null,
+            chnName: '足球',
           }, {
             id: 0,
             level: 2,
-            name: '篮球',
-            parentId: 0,
-            categoryList: null,
+            chnName: '篮球',
           }],
       }, {
-        id: 0,
+        id: 1,
         level: 1,
-        name: '音乐',
+        chnName: '音乐',
         icon: iconMusic,
-        parentId: 0,
         categoryList: [
           {
             id: 0,
             level: 2,
-            name: '钢琴',
-            parentId: 0,
-            categoryList: null,
+            chnName: '钢琴',
           }, {
             id: 0,
             level: 2,
-            name: '吉他',
-            parentId: 0,
-            categoryList: null,
+            chnName: '吉他',
           }],
       }],
     };
   },
-  methods: {},
-  created() {
-
+  methods: {
+    async getData() {
+      const { data } = await getSidebarList();
+      this.list = data;
+    },
+  },
+  mounted() {
+    // this.getData();
   },
 };
 </script>
