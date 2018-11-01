@@ -1,20 +1,28 @@
-/*eslint-disable*/
 /*
 * author: mamingyang@baofeng.com
-* date: 2018/10/24
-* usage: 公用函数
+* date: 2018/11/1
+* usage: 全局公用方法
 */
 
-// 将对象转换成带参数的形式 &a=1&b=2
+import { Message } from 'element-ui';
+
+// checkErrorCode: ajax全局校验码
+export const checkErrorCode = ({ errorCode, errorMessage }, ignore) => {
+  if (!errorCode || errorCode === ignore) {
+    Message.success('已经成功进行了一个请求');
+    return true;
+  }
+  Message.error(`${errorMessage}(${errorCode})`);
+  return false;
+};
+// checkErrorCode结束
+
+// buildQueryUrl: 将url和一个对象转化并拼接
 export const buildQueryUrl = (url, param) => {
   let x = url;
   let ba = true;
   if (x.indexOf('?') !== -1) {
-    if (x.indexOf('?') === url.length - 1) {
-      ba = false;
-    } else {
-      ba = true;
-    }
+    ba = x.indexOf('?') !== url.length - 1;
   } else {
     x += '?';
     ba = false;
@@ -41,35 +49,43 @@ export const buildQueryUrl = (url, param) => {
   return x + builder;
 };
 
-// 获取浏览器URL参数
-export const parseUrlParam = (url) => {
-  const urlParam = {};
-  if (url.indexOf('?') < 0) {
-    return urlParam;
-  }
-  const params = url.substring(url.indexOf('?') + 1).split('&');
-  for (let i = 0; i < params.length; i++) {
-    const k = params[i].substring(0, params[i].indexOf('='));
-    let v = params[i].substring(params[i].indexOf('=') + 1);
-    if (v.indexOf('#') > 0) {
-      v = v.substring(0, v.indexOf('#'));
-    }
-    try {
-      urlParam[k] = decodeURIComponent(v);
-    } catch (error) {
-      urlParam[k] = v;
-    }
-    // urlParam[k] = decodeURIComponent(v);
-  }
-  return urlParam;
-};
+// buildQueryUrl结束
 
-// 获取浏览器URL参数的值
+// getQueryString: 获取浏览器URL参数的值
 export const getQueryString = (name) => {
   const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`);
   const r = window.location.search.substr(1).match(reg);
-  if (r != null) {
-    return unescape(r[2]);
-  }
+  if (r != null) return unescape(r[2]);
   return null;
 };
+// getQueryString结束
+
+// IEVersion: 判断IE浏览器版本
+// 返回值    -1:非IE，6:≤ie6，7-11:ie7-ie11，edge: edge浏览器
+export const IEVersion = () => {
+  const { userAgent } = navigator,
+    isIE = userAgent.indexOf('compatible') > -1 && userAgent.indexOf('MSIE') > -1,
+    isEdge = userAgent.indexOf('Edge') > -1 && !isIE,
+    isIE11 = userAgent.indexOf('Trident') > -1 && userAgent.indexOf('rv:11.0') > -1;
+  if (isIE) {
+    const reIE = new RegExp('MSIE (\\d+\\.\\d+);');
+    reIE.test(userAgent);
+    const fIEVersion = parseFloat(RegExp.$1);
+    if (fIEVersion === 7) {
+      return 7;
+    } if (fIEVersion === 8) {
+      return 8;
+    } if (fIEVersion === 9) {
+      return 9;
+    } if (fIEVersion === 10) {
+      return 10;
+    }
+    return 6;
+  } if (isEdge) {
+    return 'edge';
+  } if (isIE11) {
+    return 11;
+  }
+  return -1;
+};
+// IEVersion结束
