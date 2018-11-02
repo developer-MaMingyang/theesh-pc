@@ -78,7 +78,7 @@ export default {
         password: this.register.pwd,
       });
       if (data) {
-        this.$store.commit('setLoginStatus', {
+        this.$store.dispatch('setLoginStatus', {
           phone: this.login.phone,
         });
         Message.success('恭喜您，注册成功');

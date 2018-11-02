@@ -61,7 +61,7 @@ export default {
       });
     },
     async goLogin() {
-      // this.$store.commit('setLoginStatus', {
+      // this.$store.dispatch('setLoginStatus', {
       //   phone: this.login.phone,
       // });
       // Message.success('登录成功');
@@ -73,7 +73,7 @@ export default {
         password: this.login.pwd,
       });
       if (data) {
-        this.$store.commit('setLoginStatus', {
+        this.$store.dispatch('setLoginStatus', {
           phone: this.login.phone,
         });
         Message.success('登录成功');
