@@ -16,6 +16,8 @@
 </template>
 
 <script>
+import { sendVc } from '../../service/public';
+
 export default {
   name: 'VerifyCode',
   props: ['type', 'phone', 'disableBtn', 'np'],
@@ -26,7 +28,7 @@ export default {
     };
   },
   methods: {
-    countDown() {
+    async countDown() {
       // 校验是否重复点击
       if (this.sending) {
         return;
@@ -38,6 +40,9 @@ export default {
       }
       // 结束
       // 校验必要参数是否存在
+      if (!this.type) {
+        return;
+      }
       if (this.np && this.np.length) {
         for (let i = 0; i < this.np.length; i++) {
           if (!this[this.np[i]]) {
@@ -46,6 +51,9 @@ export default {
         }
       }
       // 结束
+      await sendVc({
+        type: this.type,
+      });
       this.sending = true;
       this.$message({
         type: 'success',

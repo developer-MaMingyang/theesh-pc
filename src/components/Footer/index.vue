@@ -5,7 +5,7 @@
 */
 
 <template>
-  <el-footer class="bgcWhi" height="230px">
+  <el-footer class="bgcWhi miw1290" height="230px">
     <div class="wrap-box clearfix">
       <div class="fl mt50 lh43">
         <div>

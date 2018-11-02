@@ -11,7 +11,7 @@ import mutations from './mutations';
 Vue.use(vuex);
 
 const state = {
-
+  userInfo: {},
 };
 
 const store = new vuex.Store({

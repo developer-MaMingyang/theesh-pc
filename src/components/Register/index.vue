@@ -26,14 +26,15 @@
       <el-form-item label="密码" prop="pwd" label-width="60px">
         <el-input maxlength="18" type="password" autocomplete="off" v-model="register.pwd"></el-input>
       </el-form-item>
-      <el-button class="db btn-register" type="primary" round @click="doRegister">马上注册</el-button>
+      <el-button class="db btn-register" type="primary" round @click="validateRegister">马上注册</el-button>
     </el-form>
   </el-dialog>
 </template>
 
 <script>
-import { MessageBox } from 'element-ui';
+import { Message } from 'element-ui';
 import { checkPhone, checkMsgVc, checkPwd } from '../../utils/rules';
+import { doRegister } from '../../service/public';
 
 export default {
   name: 'Register',
@@ -63,12 +64,27 @@ export default {
     };
   },
   methods: {
-    doRegister() {
+    validateRegister() {
       this.$refs.register.validate((valid) => {
         if (valid) {
-          MessageBox.alert('已通过校验', '提示').catch(() => {});
+          this.goRegister();
         }
       });
+    },
+    async goRegister() {
+      const data = await doRegister({
+        phone: this.register.phone,
+        code: this.register.msgVc,
+        password: this.register.pwd,
+      });
+      if (data) {
+        this.$store.commit('setLoginStatus', {
+          phone: this.login.phone,
+        });
+        Message.success('恭喜您，注册成功');
+        this.$emit('closeModal', 'register');
+        this.$refs.register.resetFields();
+      }
     },
     refreshImgVc() {
       this.imgVc = `https://8.baofeng.com/mimosa/client/captcha/getimgvc?t=${new Date().getTime()}`;

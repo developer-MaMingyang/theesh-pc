@@ -6,20 +6,18 @@
 
 import { $post } from '../utils/request';
 
-export const doLogin = ({ el, data }) => $post({
+export const doLogin = async (data, el) => $post({
   url: '/user/login',
   data,
   el,
 });
 
-export const doRegister = ({ el, data }) => $post({
+export const doRegister = async (data) => $post({
   url: '/user/save',
   data,
-  el,
 });
 
-export const checkVc = ({ el, data }) => $post({
+export const sendVc = async (data) => $post({
   url: '/user/sendMessage',
   data,
-  el,
 });

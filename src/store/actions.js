@@ -4,7 +4,12 @@
 */
 
 const actions = {
-
+  setLoginStatus({ commit }, payload) {
+    commit('setLoginStatus', payload);
+  },
+  doLogout({ commit }) {
+    commit('setLoginStatus', {});
+  },
 };
 
 export default actions;

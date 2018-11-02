@@ -5,8 +5,8 @@
 */
 
 <template>
-  <el-header class="bgcWhi clearfix" height="70px">
-    <div class="wrap-box">
+  <el-header class="bgcWhi miw1290" height="70px">
+    <div class="wrap-box clearfix">
       <div class="fl logo-wrap">
         <router-link :to="{name: 'Home'}">
           <img :src="img.logo">
@@ -16,7 +16,12 @@
         <router-link class="cBla" :to="{name: 'CourseList'}">教程</router-link>
         <router-link class="cBla" :to="{name: 'Home'}">知识库</router-link>
       </nav>
-      <div class="fr fz16 lh70 account-wrap">
+      <div class="fr fz16 lh70 account-wrap" v-if="userInfo.phone">
+        <span>您好，{{userInfo.phone}}</span>
+        <span>|</span>
+        <span class="m5 cp" @click="logout">安全退出</span>
+      </div>
+      <div class="fr fz16 lh70 account-wrap" v-else>
         <span class="m5 cp" @click="dialog.login=true">登录</span>
         <span>|</span>
         <span class="m5 cp" @click="dialog.register=true">注册</span>
@@ -28,6 +33,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+import { Message } from 'element-ui';
 import logo from '../../assets/img/public/logo-top.png';
 
 export default {
@@ -35,6 +42,9 @@ export default {
   components: {
     Login: () => import('../Login'),
     Register: () => import('../Register'),
+  },
+  computed: {
+    ...mapState(['userInfo']),
   },
   data() {
     return {
@@ -50,6 +60,10 @@ export default {
   methods: {
     closeModal(name) {
       this.dialog[name] = false;
+    },
+    logout() {
+      this.$store.dispatch('doLogout');
+      Message.success('您已安全退出登录');
     },
   },
   created() {

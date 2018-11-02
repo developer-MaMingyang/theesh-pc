@@ -4,7 +4,9 @@
 */
 
 const mutations = {
-
+  setLoginStatus(state, payload) {
+    state.userInfo = payload;
+  },
 };
 
 export default mutations;

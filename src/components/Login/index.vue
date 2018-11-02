@@ -21,14 +21,15 @@
       <el-form-item label="密码" prop="pwd" label-width="60px">
         <el-input maxlength="18" type="password" autocomplete="off" v-model="login.pwd"></el-input>
       </el-form-item>
-      <el-button class="db btn-login" type="primary" round @click="doLogin">马上登陆</el-button>
+      <el-button class="db btn-login" type="primary" round @click="validateLogin">马上登陆</el-button>
     </el-form>
   </el-dialog>
 </template>
 
 <script>
-import { MessageBox } from 'element-ui';
+import { Message } from 'element-ui';
 import { checkPhone, checkPwd } from '../../utils/rules';
+import { doLogin } from '../../service/public';
 
 export default {
   name: 'Login',
@@ -52,12 +53,33 @@ export default {
     };
   },
   methods: {
-    doLogin() {
+    validateLogin() {
       this.$refs.login.validate((valid) => {
         if (valid) {
-          MessageBox.alert('已通过校验', '提示').catch(() => {});
+          this.goLogin();
         }
       });
+    },
+    async goLogin() {
+      // this.$store.commit('setLoginStatus', {
+      //   phone: this.login.phone,
+      // });
+      // Message.success('登录成功');
+      // this.$emit('closeModal', 'login');
+      // this.$refs.login.resetFields();
+      // return;
+      const data = await doLogin({
+        phone: this.login.phone,
+        password: this.login.pwd,
+      });
+      if (data) {
+        this.$store.commit('setLoginStatus', {
+          phone: this.login.phone,
+        });
+        Message.success('登录成功');
+        this.$emit('closeModal', 'login');
+        this.$refs.login.resetFields();
+      }
     },
   },
   created() {
@@ -67,5 +89,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./styles";
+  @import "./styles";
 </style>
