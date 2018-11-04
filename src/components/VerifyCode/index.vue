@@ -52,6 +52,7 @@ export default {
       }
       // 结束
       await sendVc({
+        phone: this.phone,
         type: this.type,
       });
       this.sending = true;

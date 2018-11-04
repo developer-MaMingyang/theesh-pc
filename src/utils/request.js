@@ -120,7 +120,8 @@ export const $post = ({ url, params, data, ignore, el }) => new Promise((resolve
     cancelToken: new CancelToken((c) => {
       cancel = c;
     }),
-  }).then(({data}) => {
+  }).then(({data, status}) => {
+    if (status !== 200) return;
     if (sending) sending.close();
     if (checkErrorCode(data, ignore)) {
       resolve(data, ignore);

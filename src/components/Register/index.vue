@@ -21,7 +21,7 @@
       </el-form-item>
       <el-form-item label="验证码" prop="msgVc" label-width="60px">
         <el-input maxlength="8" autocomplete="off" v-model="register.msgVc"></el-input>
-        <VerifyCode class="vc" :disableBtn="true" :np="['phone']" :phone="register.phone" />
+        <VerifyCode class="vc" :disableBtn="true" :np="['phone']" :phone="register.phone" type="register" />
       </el-form-item>
       <el-form-item label="密码" prop="pwd" label-width="60px">
         <el-input maxlength="18" type="password" autocomplete="off" v-model="register.pwd"></el-input>

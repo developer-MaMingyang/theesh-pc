@@ -11,11 +11,11 @@
         <router-link :to="{name: 'CourseDetail', params: {id: item.id}}">
           <div class="clearfix">
             <div class="fl img-wrap">
-              <img :src="item.photoUrl" alt="加载失败">
+              <img :src="item.coursePhoto" alt="加载失败">
             </div>
             <div class="fl item-content">
-              <div class="title" v-text="item.title"></div>
-              <div class="summary" v-text="item.description"></div>
+              <div class="title" v-text="item.courseName"></div>
+              <div class="summary" v-text="item.courseDesc"></div>
             </div>
           </div>
         </router-link>
@@ -34,17 +34,7 @@ export default {
   },
   data() {
     return {
-      list: [{
-        photoUrl: '//www.baidu.com/img/superlogo_c4d7df0a003d3db9b65e9ef0fe6da1ec.png?where=super',
-        id: 1,
-        title: '我是标题',
-        description: '我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。我是一段比较长的内容。',
-      }, {
-        photoUrl: '//www.baidu.com/img/superlogo_c4d7df0a003d3db9b65e9ef0fe6da1ec.png?where=super',
-        id: 1,
-        title: '我是标题',
-        description: '我是内容',
-      }],
+      list: [],
     };
   },
   methods: {
@@ -54,7 +44,7 @@ export default {
     },
   },
   mounted() {
-    // this.getData();
+    this.getData();
   },
 };
 </script>

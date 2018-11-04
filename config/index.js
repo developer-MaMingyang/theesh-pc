@@ -4,13 +4,25 @@
 
 const path = require('path')
 
+const HOST = 'http://www.theesh.com:8080'
+
 module.exports = {
   dev: {
 
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/course': {
+        target: HOST
+      },
+      '/user': {
+        target: HOST
+      },
+      '/category': {
+        target: HOST
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST

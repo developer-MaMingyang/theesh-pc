@@ -61,14 +61,6 @@ export default {
       });
     },
     async goLogin() {
-      // this.$store.dispatch('setLoginStatus', {
-      //   phone: this.login.phone,
-      // }).then(() => {
-      //   Message.success('登录成功');
-      //   this.$emit('closeModal', 'login');
-      //   this.$refs.login.resetFields();
-      // });
-      // return;
       const data = await doLogin({
         phone: this.login.phone,
         password: this.login.pwd,
