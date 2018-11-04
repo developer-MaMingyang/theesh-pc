@@ -27,6 +27,9 @@ export const buildQueryUrl = (url, param) => {
     ba = false;
   }
   let builder = '';
+  if (!param || typeof param !== 'object') {
+    return url;
+  }
   for (const i in param) {
     const p = `&${i}=`;
     if (param[i]) {

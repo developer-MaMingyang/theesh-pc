@@ -21,6 +21,9 @@ module.exports = {
       },
       '/category': {
         target: HOST
+      },
+      '/lesson': {
+        target: HOST
       }
     },
 

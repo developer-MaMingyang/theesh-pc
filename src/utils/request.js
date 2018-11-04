@@ -66,13 +66,11 @@ axios.interceptors.response.use(response => response, (err) => {
       default:
         err.message = `连接错误。`;
     }
-  } else {
-    err.message = '连接到服务器失败';
+    Notification.error({
+      title: `错误${err.response.status}`,
+      message: `${err.message}`,
+    });
   }
-  Notification.error({
-    title: `错误${err.response.status}`,
-    message: `${err.message}`,
-  });
   return Promise.resolve(err.response);
 });
 
@@ -120,7 +118,9 @@ export const $post = ({ url, params, data, ignore, el }) => new Promise((resolve
     cancelToken: new CancelToken((c) => {
       cancel = c;
     }),
-  }).then(({data, status}) => {
+  }).then((res) => {
+    if (!res) return;
+    const {data, status} = res;
     if (status !== 200) return;
     if (sending) sending.close();
     if (checkErrorCode(data, ignore)) {

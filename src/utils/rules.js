@@ -43,7 +43,7 @@ export const checkMsgVc = (rule, value, callback) => {
   if (value === '') {
     callback(new Error('请输入短信验证码'));
   }
-  if (!/^[0-9]{6}$/.test(value)) {
+  if (!/^[0-9]{4}$/.test(value)) {
     callback(new Error('请输入正确的短信验证码'));
   }
   callback();

@@ -16,10 +16,12 @@
   >
     <el-form class="w300 center" ref="login" :model="login" :rules="rules" label-position="left">
       <el-form-item label="手机号" prop="phone" label-width="60px">
-        <el-input maxlength="13" autocomplete="off" v-model="login.phone"></el-input>
+        <el-input maxlength="13" autocomplete="off" v-model="login.phone"
+                  @keypress.enter.native="validateLogin"></el-input>
       </el-form-item>
-      <el-form-item label="密码" prop="pwd" label-width="60px">
-        <el-input maxlength="18" type="password" autocomplete="off" v-model="login.pwd"></el-input>
+      <el-form-item label="密码" prop="password" label-width="60px">
+        <el-input maxlength="18" type="password" autocomplete="off" v-model="login.password"
+                  @keypress.enter.native="validateLogin"></el-input>
       </el-form-item>
       <el-button class="db btn-login" type="primary" round @click="validateLogin">马上登陆</el-button>
     </el-form>
@@ -44,11 +46,11 @@ export default {
       isShow: false,
       rules: {
         phone: [{ validator: checkPhone, trigger: 'blur' }],
-        pwd: [{ validator: checkPwd, trigger: 'blur' }],
+        password: [{ validator: checkPwd, trigger: 'blur' }],
       },
       login: {
         phone: '',
-        pwd: '',
+        password: '',
       },
     };
   },
@@ -61,14 +63,10 @@ export default {
       });
     },
     async goLogin() {
-      const data = await doLogin({
-        phone: this.login.phone,
-        password: this.login.pwd,
-      });
-      if (data) {
-        this.$store.dispatch('setLoginStatus', {
-          phone: this.login.phone,
-        }).then(() => {
+      const { phone, password } = this.login;
+      const res = await doLogin({ phone, password });
+      if (res) {
+        this.$store.dispatch('setLoginStatus', { phone }).then(() => {
           Message.success('登录成功');
           this.$emit('closeModal', 'login');
           this.$refs.login.resetFields();

@@ -6,7 +6,7 @@
 <template>
   <div class="course-wrap">
     <div class="item-wrap">
-      <TitleBar :title="$route.params.title"/>
+      <TitleBar :title="decodeURIComponent($route.query.title)"/>
       <el-card class="item bgcWhi mt20" shadow="hover" v-for="(item, index) in list" :key="index">
         <router-link :to="{name: 'CourseDetail', params: {id: item.id}}">
           <div class="clearfix">
@@ -37,13 +37,19 @@ export default {
       list: [],
     };
   },
+  watch: {
+    '$route.query'() {
+      this.getData();
+    },
+  },
   methods: {
     async getData() {
-      const { id } = this.$route.params;
-      if (!id) {
+      const { id, title } = this.$route.query;
+      if (!id || !title) {
         this.$router.push('/');
+        return;
       }
-      const { data } = getCourseList(id);
+      const { data } = await getCourseList({ id });
       this.list = data;
     },
   },

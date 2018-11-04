@@ -17,14 +17,17 @@
     <el-form
       class="w300 center" ref="register" :model="register" :rules="rules" label-position="left">
       <el-form-item label="手机号" prop="phone" label-width="60px">
-        <el-input maxlength="13" autocomplete="off" v-model="register.phone"></el-input>
+        <el-input maxlength="13" autocomplete="off" v-model="register.phone"
+                  @keypress.enter.native="validateRegister"></el-input>
       </el-form-item>
       <el-form-item label="验证码" prop="msgVc" label-width="60px">
-        <el-input maxlength="8" autocomplete="off" v-model="register.msgVc"></el-input>
-        <VerifyCode class="vc" :disableBtn="true" :np="['phone']" :phone="register.phone" type="register" />
+        <el-input maxlength="8" autocomplete="off" v-model="register.msgVc"
+                  @keypress.enter.native="validateRegister"></el-input>
+        <VerifyCode class="vc" :disableBtn="true" :np="['phone']" :phone="register.phone" type="register"/>
       </el-form-item>
-      <el-form-item label="密码" prop="pwd" label-width="60px">
-        <el-input maxlength="18" type="password" autocomplete="off" v-model="register.pwd"></el-input>
+      <el-form-item label="密码" prop="password" label-width="60px">
+        <el-input maxlength="18" type="password" autocomplete="off" v-model="register.password"
+                  @keypress.enter.native="validateRegister"></el-input>
       </el-form-item>
       <el-button class="db btn-register" type="primary" round @click="validateRegister">马上注册</el-button>
     </el-form>
@@ -53,12 +56,12 @@ export default {
       rules: {
         phone: [{ validator: checkPhone, trigger: 'blur' }],
         msgVc: [{ validator: checkMsgVc, trigger: 'blur' }],
-        pwd: [{ validator: checkPwd, trigger: 'blur' }],
+        password: [{ validator: checkPwd, trigger: 'blur' }],
       },
       register: {
         phone: '',
         msgVc: '',
-        pwd: '',
+        password: '',
       },
       imgVc: '',
     };
@@ -72,18 +75,18 @@ export default {
       });
     },
     async goRegister() {
-      const data = await doRegister({
-        phone: this.register.phone,
-        code: this.register.msgVc,
-        password: this.register.pwd,
+      const { phone, msgVc, password } = this.register;
+      const res = await doRegister({
+        phone,
+        password,
+        code: msgVc,
       });
-      if (data) {
-        this.$store.dispatch('setLoginStatus', {
-          phone: this.login.phone,
+      if (res) {
+        this.$store.dispatch('setLoginStatus', { phone }).then(() => {
+          Message.success(res.message);
+          this.$emit('closeModal', 'register');
+          this.$refs.register.resetFields();
         });
-        Message.success('恭喜您，注册成功');
-        this.$emit('closeModal', 'register');
-        this.$refs.register.resetFields();
       }
     },
     refreshImgVc() {

@@ -21,11 +21,6 @@ const router = new Router({
       name: 'CourseDetail',
       component: () => import('@/views/CourseDetail'),
     },
-    {
-      path: '/play/:id',
-      name: 'Play',
-      component: () => import('@/views/Play'),
-    },
   ],
 });
 

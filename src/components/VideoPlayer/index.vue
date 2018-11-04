@@ -5,16 +5,19 @@
 */
 
 <template>
-<div class="player-wrap">
-  <Player :source="source" width="1200px" height="675px" />
-</div>
+<el-dialog class="player-wrap" :visible.sync="show" :title="title">
+  <Player :source="source" width="800px" height="450px" :cover="cover" />
+</el-dialog>
 </template>
 
 <script>
 export default {
   name: 'VideoPlayer',
   props: {
+    title: String,
+    show: Boolean,
     source: String,
+    cover: String,
   },
   components: {
     Player: () => import('vue-aliplayer'),

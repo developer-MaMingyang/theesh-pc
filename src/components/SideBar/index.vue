@@ -8,11 +8,11 @@
   <div class="sidebar">
     <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
       <div class="fz16 mb10">
-        <img class="vab" :src="item.catPhoto">
+        <img :src="item.catPhoto">
         <span>{{item.chnName}}</span>
       </div>
       <div class="link-wrap">
-        <router-link class="little-link br2 mr5" v-for="(link, idx) in item.categoryList" :key="idx" :to="{name: 'CourseList', params: {id: link.id, title: link.chnName}}">
+        <router-link class="little-link br2 mr5" :class="[{active: link.id === $route.query.id}]" v-for="(link, idx) in item.categoryList" :key="idx" :to="{name: 'CourseList', query: {id: link.id, title: encodeURIComponent(link.chnName)}}">
           {{link.chnName}}
         </router-link>
       </div>

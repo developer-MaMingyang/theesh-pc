@@ -13,7 +13,7 @@ export const doLogin = async (data, el) => $post({
 });
 
 export const doRegister = async (data) => $post({
-  url: '/user/save',
+  url: '/user/register',
   data,
 });
 
