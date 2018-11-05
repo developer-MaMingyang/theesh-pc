@@ -18,6 +18,9 @@ export const checkErrorCode = ({ code, message }, ignore) => {
 
 // buildQueryUrl: 将url和一个对象转化并拼接
 export const buildQueryUrl = (url, param) => {
+  if (!param || typeof param !== 'object') {
+    return url;
+  }
   let x = url;
   let ba = true;
   if (x.indexOf('?') !== -1) {
@@ -27,9 +30,6 @@ export const buildQueryUrl = (url, param) => {
     ba = false;
   }
   let builder = '';
-  if (!param || typeof param !== 'object') {
-    return url;
-  }
   for (const i in param) {
     const p = `&${i}=`;
     if (param[i]) {
