@@ -5,37 +5,47 @@
 */
 
 <template>
-<el-dialog class="player-wrap" :visible.sync="show" :title="title">
-  <Player :source="source" width="800px" height="450px" :cover="cover" />
-</el-dialog>
+  <div class="player-wrap" id="player">
+    <Player width="1200px" height="675px" :vid="videoId" :cover="cover"
+            :playauth="playAuth"/>
+  </div>
 </template>
 
 <script>
+import { getPlayAuth } from '../../service/play';
+
 export default {
   name: 'VideoPlayer',
-  props: {
-    title: String,
-    show: Boolean,
-    source: String,
-    cover: String,
-  },
   components: {
     Player: () => import('vue-aliplayer'),
   },
+  props: {
+    title: String,
+    cover: String,
+    videoId: String,
+  },
   data() {
     return {
-
+      playAuth: '',
     };
   },
   methods: {
-
+    async getAuth() {
+      const { data } = await getPlayAuth({
+        videoId: this.videoId,
+        el: '#player',
+      });
+      if (data) {
+        this.playAuth = data;
+      }
+    },
   },
-  created() {
-
+  mounted() {
+    this.getAuth();
   },
 };
 </script>
 
 <style lang="scss" scoped>
-@import "./styles";
+  @import "./styles";
 </style>

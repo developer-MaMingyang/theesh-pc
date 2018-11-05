@@ -80,6 +80,7 @@ axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest',
 };
 axios.defaults.timeout = 10000;
+axios.withCredentials = true;
 
 // get请求
 export const $get = ({ url, params, ignore, el }) => new Promise((resolve, reject) => {

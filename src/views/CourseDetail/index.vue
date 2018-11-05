@@ -9,10 +9,13 @@
     <div>
       <h3>课程列表</h3>
       <ul>
-        <li class="cp" v-for="(item, index) in detail.lessons" :key="index" @click="openVideo" v-text="item.lessonName"></li>
+        <li class="cp" v-for="(item, index) in detail.lessons" :key="index">
+          <router-link :to="{name: 'Play', query: {title: item.lessonName, cover: item.coverUrl, videoId: item.videoId}}">
+            {{`${index+1}、${item.lessonName}`}}
+          </router-link>
+        </li>
       </ul>
     </div>
-    <VideoPlayer :title="video.title" :show="video.show" :cover="video.coverImg" />
   </div>
 </template>
 
@@ -33,6 +36,7 @@ export default {
         title: '',
         show: false,
         coverImg: '',
+        videoId: '',
       },
     };
   },
@@ -48,8 +52,12 @@ export default {
       });
       this.detail = data;
     },
-    openVideo() {
-
+    openVideo(item) {
+      const { lessonName, coverUrl, videoId } = item;
+      this.video.title = lessonName;
+      this.video.coverImg = coverUrl;
+      this.video.videoId = videoId;
+      this.video.show = true;
     },
   },
   mounted() {

@@ -4,7 +4,7 @@
 */
 
 <template>
-  <VideoPlayer source="//player.alicdn.com/video/aliyunmedia.mp4"/>
+  <VideoPlayer :title="title" :cover="cover" :videoId="videoId"/>
 </template>
 
 <script>
@@ -15,14 +15,21 @@ export default {
   },
   data() {
     return {
-
+      title: '',
+      cover: '',
+      videoId: '',
     };
   },
   methods: {
-
+    getData() {
+      const { title, cover, videoId } = this.$route.query;
+      this.title = title;
+      this.cover = cover;
+      this.videoId = videoId;
+    },
   },
-  created() {
-
+  mounted() {
+    this.getData();
   },
 };
 </script>
