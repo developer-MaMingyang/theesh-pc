@@ -47,6 +47,11 @@ export default {
       }
     },
   },
+  mounted() {
+    if (this.videoId) {
+      this.getAuth();
+    }
+  },
 };
 </script>
 
