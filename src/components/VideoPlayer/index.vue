@@ -7,7 +7,7 @@
 <template>
   <div class="player-wrap">
     <Player width="1290px" height="725px" :vid="videoId" :cover="cover"
-            :playauth="playAuth" useH5Prism />
+            :playauth="playAuth" />
   </div>
 </template>
 

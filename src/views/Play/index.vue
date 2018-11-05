@@ -6,7 +6,7 @@
 <template>
   <div class="wrap-box">
     <h3 v-text="decodeURIComponent(title)"></h3>
-    <VideoPlayer :title="decodeURIComponent(title)" :cover="cover" :videoId="videoId"/>
+    <VideoPlayer :cover="cover" :videoId="videoId"/>
   </div>
 </template>
 
