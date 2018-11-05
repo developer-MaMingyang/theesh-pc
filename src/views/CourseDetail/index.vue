@@ -8,7 +8,7 @@
   <div class="wrap-box">
     <div class="desc clearfix">
       <div class="fl img-wrap">
-        <img :src="detail.coursePhoto" alt="">
+        <img :src="detail.coursePhoto" alt="加载失败">
       </div>
       <div class="fl">
         <h3 v-text="detail.courseName"></h3>

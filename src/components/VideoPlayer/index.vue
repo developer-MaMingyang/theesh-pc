@@ -29,6 +29,13 @@ export default {
       playAuth: '',
     };
   },
+  watch: {
+    videoId(nv) {
+      if (nv) {
+        this.getAuth();
+      }
+    },
+  },
   methods: {
     async getAuth() {
       const { data } = await getPlayAuth({
@@ -39,9 +46,6 @@ export default {
         this.playAuth = data;
       }
     },
-  },
-  mounted() {
-    this.getAuth();
   },
 };
 </script>
