@@ -4,7 +4,10 @@
 */
 
 <template>
-  <VideoPlayer :title="title" :cover="cover" :videoId="videoId"/>
+  <div class="wrap-box">
+    <h3 v-text="decodeURIComponent(title)"></h3>
+    <VideoPlayer :title="decodeURIComponent(title)" :cover="cover" :videoId="videoId"/>
+  </div>
 </template>
 
 <script>

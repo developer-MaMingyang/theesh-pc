@@ -6,6 +6,7 @@
 
 import { $post } from '../utils/request';
 
-export const getSidebarList = async () => $post({
+export const getSidebarList = async ({ el }) => $post({
   url: '/category/findAll',
+  el,
 });

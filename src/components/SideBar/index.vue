@@ -6,17 +6,21 @@
 
 <template>
   <div class="sidebar">
-    <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
-      <div class="fz16 mb10">
-        <img :src="item.catPhoto">
-        <span>{{item.chnName}}</span>
-      </div>
-      <div class="link-wrap">
-        <router-link class="little-link br2 mr5" :class="[{active: link.id === $route.query.id}]" v-for="(link, idx) in item.categoryList" :key="idx" :to="{name: 'CourseList', query: {id: link.id, title: encodeURIComponent(link.chnName)}}">
-          {{link.chnName}}
-        </router-link>
-      </div>
-    </el-card>
+    <div class="item-wrap">
+      <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
+        <div class="fz16 mb10">
+          <img :src="item.catPhoto">
+          <span>{{item.chnName}}</span>
+        </div>
+        <div class="link-wrap">
+          <router-link class="little-link br2 mr5" :class="[{active: link.id === $route.query.id}]"
+                       v-for="(link, idx) in item.categoryList" :key="idx"
+                       :to="{name: 'CourseList', query: {id: link.id, title: encodeURIComponent(link.chnName)}}">
+            {{link.chnName}}
+          </router-link>
+        </div>
+      </el-card>
+    </div>
   </div>
 </template>
 
@@ -32,7 +36,9 @@ export default {
   },
   methods: {
     async getData() {
-      const { data } = await getSidebarList();
+      const { data } = await getSidebarList({
+        el: '.item-wrap',
+      });
       this.list = data;
     },
   },
@@ -43,5 +49,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "./styles";
+  @import "./styles";
 </style>

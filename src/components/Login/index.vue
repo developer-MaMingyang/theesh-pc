@@ -64,7 +64,7 @@ export default {
     },
     async goLogin() {
       const { phone, password } = this.login;
-      const res = await doLogin({ phone, password });
+      const res = await doLogin({ phone, password }, { el: '.btn-login' });
       if (res) {
         this.$store.dispatch('setLoginStatus', { phone }).then(() => {
           Message.success('登录成功');

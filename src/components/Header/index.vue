@@ -37,6 +37,7 @@
 import { mapState } from 'vuex';
 import { Message } from 'element-ui';
 import logo from '../../assets/img/public/logo-top.png';
+import { doLogout } from '../../service/public';
 
 export default {
   name: 'Header',
@@ -62,9 +63,13 @@ export default {
     closeModal(name) {
       this.dialog[name] = false;
     },
-    logout() {
-      this.$store.dispatch('doLogout');
-      Message.success('您已安全退出登录');
+    async logout() {
+      doLogout({
+        el: '.account-wrap',
+      }).then(() => {
+        this.$store.dispatch('doLogout');
+        Message.success('您已安全退出登录');
+      });
     },
   },
   created() {

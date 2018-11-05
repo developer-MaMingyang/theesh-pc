@@ -1,20 +1,24 @@
 .sidebar {
   flex: 1;
-  .container {
-    width: 235px;
-    img {
-      width: 15px;
-      height: 15px;
-    }
-    .link-wrap {
-      margin-left: -8px;
-      .little-link {
-        padding: 2px 8px;
-        color: #303133;
-        transition: all .3s;
-        &:hover, &.active {
-          background-color: #67c23a;
-          color: #ffffff;
+  .item-wrap {
+    min-width: 235px;
+    min-height: 150px;
+    .container {
+      width: 235px;
+      img {
+        width: 15px;
+        height: 15px;
+      }
+      .link-wrap {
+        margin-left: -8px;
+        .little-link {
+          padding: 2px 8px;
+          color: #303133;
+          transition: all .3s;
+          &:hover, &.active {
+            background-color: #67c23a;
+            color: #ffffff;
+          }
         }
       }
     }

@@ -5,14 +5,26 @@
 */
 
 <template>
-  <div>
-    <div>
+  <div class="wrap-box">
+    <div class="desc clearfix">
+      <div class="fl img-wrap">
+        <img :src="detail.coursePhoto" alt="">
+      </div>
+      <div class="fl">
+        <h3 v-text="detail.courseName"></h3>
+        <p v-text="detail.courseDesc"></p>
+      </div>
+    </div>
+    <div class="detail">
       <h3>课程列表</h3>
-      <ul>
-        <li class="cp" v-for="(item, index) in detail.lessons" :key="index">
-          <router-link :to="{name: 'Play', query: {title: item.lessonName, cover: item.coverUrl, videoId: item.videoId}}">
+      <ul class="clearfix">
+        <li class="cp fl" v-for="(item, index) in detail.lessons" :key="index">
+          <router-link :to="{name: 'Play', query: {title: encodeURIComponent(item.lessonName), cover: item.coverUrl, videoId: item.videoId}}">
             {{`${index+1}、${item.lessonName}`}}
           </router-link>
+        </li>
+        <li v-if="loaded && !detail.lessons.length">
+          <p class="mt65 tc">暂无数据</p>
         </li>
       </ul>
     </div>
@@ -29,12 +41,12 @@ export default {
   },
   data() {
     return {
+      loaded: false,
       detail: {
         lessons: [],
       },
       video: {
         title: '',
-        show: false,
         coverImg: '',
         videoId: '',
       },
@@ -50,6 +62,7 @@ export default {
       const { data } = await getCourseDetail({
         courseId: id,
       });
+      this.loaded = true;
       this.detail = data;
     },
     openVideo(item) {
@@ -57,7 +70,6 @@ export default {
       this.video.title = lessonName;
       this.video.coverImg = coverUrl;
       this.video.videoId = videoId;
-      this.video.show = true;
     },
   },
   mounted() {

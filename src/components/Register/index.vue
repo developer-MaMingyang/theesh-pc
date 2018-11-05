@@ -80,7 +80,7 @@ export default {
         phone,
         password,
         code: msgVc,
-      });
+      }, { el: '.btn-register' });
       if (res) {
         this.$store.dispatch('setLoginStatus', { phone }).then(() => {
           Message.success(res.message);

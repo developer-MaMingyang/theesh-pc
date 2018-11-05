@@ -5,9 +5,9 @@
 */
 
 <template>
-  <div class="player-wrap" id="player">
-    <Player width="1200px" height="675px" :vid="videoId" :cover="cover"
-            :playauth="playAuth"/>
+  <div class="player-wrap">
+    <Player width="1290px" height="725px" :vid="videoId" :cover="cover"
+            :playauth="playAuth" useH5Prism />
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
     async getAuth() {
       const { data } = await getPlayAuth({
         videoId: this.videoId,
-        el: '#player',
+        el: '.player-wrap',
       });
       if (data) {
         this.playAuth = data;
