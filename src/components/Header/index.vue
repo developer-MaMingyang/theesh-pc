@@ -5,7 +5,7 @@
 */
 
 <template>
-  <el-header class="bgcWhi miw1290" height="90px">
+  <el-header class="bgcWhi miw1200" height="90px">
     <div class="wrap-box clearfix">
       <div class="fl logo-wrap">
         <router-link :to="{name: 'Home'}">

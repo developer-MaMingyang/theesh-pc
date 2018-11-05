@@ -9,7 +9,7 @@
         width: 100%;
         height: 186px;
         .item-content {
-          width: 635px;
+          width: 565px;
           padding: 33px 14px 22px 20px;
           .title {
             width: 270px;
@@ -28,6 +28,12 @@
         }
         .img-wrap {
           width: 330px;
+          align-items: center;
+          justify-content: center;
+          img {
+            width: 240px;
+            height: 135px;
+          }
         }
       }
     }

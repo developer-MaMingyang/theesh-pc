@@ -4,7 +4,7 @@
 
 const path = require('path')
 
-const HOST = 'http://www.theesh.com:8080'
+const HOST = 'http://www.theesh.com'
 
 module.exports = {
   dev: {
@@ -13,16 +13,7 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/course': {
-        target: HOST
-      },
-      '/user': {
-        target: HOST
-      },
-      '/category': {
-        target: HOST
-      },
-      '/lesson': {
+      '/apis': {
         target: HOST
       }
     },

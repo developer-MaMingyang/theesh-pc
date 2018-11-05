@@ -74,7 +74,7 @@ axios.interceptors.response.use(response => response, (err) => {
   return Promise.resolve(err.response);
 });
 
-axios.defaults.baseURL = /^localhost+/.test(window.location.host)?'/':'http://www.theesh.com:8080/';
+axios.defaults.baseURL = '/apis';
 
 axios.defaults.headers = {
   'X-Requested-With': 'XMLHttpRequest',

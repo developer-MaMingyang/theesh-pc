@@ -11,7 +11,7 @@
         <el-card class="item bgcWhi mb20" shadow="hover" v-for="(item, index) in list" :key="index">
           <router-link :to="{name: 'CourseDetail', params: {id: item.id}}">
             <div class="clearfix">
-              <div class="fl img-wrap">
+              <div class="df fl img-wrap">
                 <img :src="item.coursePhoto" alt="加载失败">
               </div>
               <div class="fl item-content">
