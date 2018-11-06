@@ -33,7 +33,7 @@ export default {
       }
       const { data } = await getPlayAuth({
         videoId: this.videoId,
-        el: '.player-wrap',
+        el: '#player-wrap',
       });
       if (data) {
         try {
@@ -44,6 +44,7 @@ export default {
             autoplay: false,
             vid: this.videoId,
             playauth: data,
+            cover: this.cover,
           });
         } catch (e) {
           console.log(e);
