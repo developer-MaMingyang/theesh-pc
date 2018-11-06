@@ -29,15 +29,14 @@ export default {
       playAuth: '',
     };
   },
-  watch: {
-    videoId(nv) {
-      if (nv) {
-        this.getAuth();
-      }
-    },
-  },
   methods: {
     async getAuth() {
+      if (!this.videoId) {
+        setTimeout(() => {
+          this.getAuth();
+        }, 500);
+        return;
+      }
       const { data } = await getPlayAuth({
         videoId: this.videoId,
         el: '.player-wrap',
@@ -48,9 +47,7 @@ export default {
     },
   },
   mounted() {
-    if (this.videoId) {
-      this.getAuth();
-    }
+    this.getAuth();
   },
 };
 </script>
