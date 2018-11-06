@@ -6,7 +6,7 @@
 <template>
   <div class="wrap-box">
     <h3 v-text="decodeURIComponent(title)"></h3>
-    <VideoPlayer :cover="cover" :videoId="videoId"/>
+    <VideoPlayer v-if="cover && videoId && show" :cover="cover" :videoId="videoId"/>
   </div>
 </template>
 
@@ -18,6 +18,7 @@ export default {
   },
   data() {
     return {
+      show: false,
       title: '',
       cover: '',
       videoId: '',
@@ -33,6 +34,10 @@ export default {
   },
   mounted() {
     this.getData();
+    this.show = false;
+    setTimeout(() => {
+      this.show = true;
+    }, 1000);
   },
 };
 </script>

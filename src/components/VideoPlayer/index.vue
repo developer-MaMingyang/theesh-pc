@@ -5,10 +5,7 @@
 */
 
 <template>
-  <div class="player-wrap">
-    <Player width="1200px" height="675px" :vid="videoId" :cover="cover"
-            :playauth="playAuth" />
-  </div>
+  <div id="player-wrap"></div>
 </template>
 
 <script>
@@ -16,9 +13,6 @@ import { getPlayAuth } from '../../service/play';
 
 export default {
   name: 'VideoPlayer',
-  components: {
-    Player: () => import('vue-aliplayer'),
-  },
   props: {
     title: String,
     cover: String,
@@ -42,7 +36,18 @@ export default {
         el: '.player-wrap',
       });
       if (data) {
-        this.playAuth = data;
+        try {
+          new Aliplayer({
+            id: 'player-wrap',
+            width: '1200px',
+            height: '675px',
+            autoplay: false,
+            vid: this.videoId,
+            playauth: data,
+          });
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
   },
