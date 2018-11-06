@@ -37,7 +37,7 @@ export default {
       });
       if (data) {
         try {
-          new Aliplayer({
+          new Aliplayer({ // eslint-disable-line
             id: 'player-wrap',
             width: '1200px',
             height: '675px',
