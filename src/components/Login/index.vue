@@ -9,8 +9,8 @@
     custom-class="w500"
     center
     title="登陆知视"
-    :visible.sync="isShow"
-    @close="$emit('closeModal', 'login')"
+    :visible="show"
+    @close="$emit('update:show', false)"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
   >
@@ -68,7 +68,7 @@ export default {
       if (res) {
         this.$store.dispatch('setLoginStatus', { phone }).then(() => {
           Message.success('登录成功');
-          this.$emit('closeModal', 'login');
+          this.$emit('update:show', false);
           this.$refs.login.resetFields();
         });
       }

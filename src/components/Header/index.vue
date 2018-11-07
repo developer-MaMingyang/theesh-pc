@@ -27,8 +27,8 @@
         <span class="m5 cp" @click="dialog.register=true">注册</span>
       </div>
     </div>
-    <Login :show="dialog.login" @closeModal="closeModal"/>
-    <Register :show="dialog.register" @closeModal="closeModal"/>
+    <Login :show.sync="dialog.login"/>
+    <Register :show.sync="dialog.register"/>
   </el-header>
 </template>
 
@@ -59,9 +59,6 @@ export default {
     };
   },
   methods: {
-    closeModal(name) {
-      this.dialog[name] = false;
-    },
     async logout() {
       doLogout({
         el: '.account-wrap',

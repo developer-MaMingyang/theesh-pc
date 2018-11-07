@@ -10,7 +10,7 @@
     center
     title="注册知视"
     :visible.sync="isShow"
-    @close="$emit('closeModal', 'register')"
+    @close="$emit('update:show', false)"
     :close-on-click-modal="false"
     :close-on-press-escape="false"
   >
@@ -84,7 +84,7 @@ export default {
       if (res) {
         this.$store.dispatch('setLoginStatus', { phone }).then(() => {
           Message.success(res.message);
-          this.$emit('closeModal', 'register');
+          this.$emit('update:show', false);
           this.$refs.register.resetFields();
         });
       }
