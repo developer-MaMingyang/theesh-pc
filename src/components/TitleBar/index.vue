@@ -7,14 +7,15 @@
 <template>
 <div class="clearfix">
   <p class="fl mr10 mt3 icon-before"></p>
-  <p class="fl fb fz20" v-text="title"></p>
+  <p class="fl fb fz20">
+    <slot></slot>
+  </p>
 </div>
 </template>
 
 <script>
 export default {
   name: 'TitleBar',
-  props: ['title'],
   data() {
     return {
 
@@ -23,7 +24,7 @@ export default {
   methods: {
 
   },
-  created() {
+  mounted() {
 
   },
 };

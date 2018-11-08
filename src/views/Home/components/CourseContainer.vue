@@ -6,7 +6,7 @@
 <template>
   <div class="course-wrap">
     <div class="item-wrap">
-      <TitleBar title="热门课程"/>
+      <TitleBar>热门课程</TitleBar>
       <div class="list">
         <el-card class="item bgcWhi mb20" shadow="hover" v-for="(item, index) in list" :key="index">
           <router-link :to="{name: 'CourseDetail', params: {id: item.id}}">
