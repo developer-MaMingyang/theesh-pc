@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import 'normalize.css';
+import 'babel-polyfill';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import ElementUI from 'element-ui';
