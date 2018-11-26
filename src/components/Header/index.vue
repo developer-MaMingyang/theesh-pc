@@ -14,7 +14,7 @@
       </div>
       <nav class="fl nav lh70">
         <router-link class="cBla" :to="{name: 'Home'}">首页</router-link>
-        <router-link class="cBla" :to="{name: 'Home'}">教程</router-link>
+        <!--<router-link class="cBla" :to="{name: 'Home'}">教程</router-link>-->
       </nav>
       <div class="fr fz16 lh70 account-wrap" v-if="userInfo.phone">
         <span>您好，{{userInfo.phone}}</span>
