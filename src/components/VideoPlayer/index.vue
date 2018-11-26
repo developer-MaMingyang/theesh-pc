@@ -10,6 +10,7 @@
 
 <script>
 import { getPlayAuth } from '../../service/play';
+import './aliplayer-flash.min';
 
 export default {
   name: 'VideoPlayer',
