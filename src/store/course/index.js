@@ -5,7 +5,7 @@
 
 import sidebar from './sidebar';
 import home from './home';
-import couseList from './couseList';
+import courseList from './courseList';
 import detail from './detail';
 
 const course = {
@@ -13,7 +13,7 @@ const course = {
   modules: {
     sidebar,
     home,
-    couseList,
+    courseList,
     detail,
   },
 };

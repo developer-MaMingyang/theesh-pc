@@ -12,7 +12,9 @@
       .link-wrap {
         margin-left: -8px;
         .little-link {
+          display: inline-block;
           padding: 2px 8px;
+          margin-bottom: 5px;
           color: #303133;
           transition: all .3s;
           &:hover, &.active {
