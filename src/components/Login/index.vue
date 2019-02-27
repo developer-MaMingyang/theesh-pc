@@ -8,7 +8,7 @@
   <el-dialog
     custom-class="w500"
     center
-    title="登陆知视"
+    title="登录知视"
     :visible="show"
     @close="$emit('update:show', false)"
     :close-on-click-modal="false"
@@ -23,7 +23,7 @@
         <el-input maxlength="18" type="password" autocomplete="off" v-model="login.password"
                   @keypress.enter.native="validateLogin"></el-input>
       </el-form-item>
-      <el-button class="db btn-login" type="primary" round @click="validateLogin">马上登陆</el-button>
+      <el-button class="db btn-login" type="primary" round @click="validateLogin">马上登录</el-button>
     </el-form>
   </el-dialog>
 </template>
@@ -31,7 +31,6 @@
 <script>
 import { Message } from 'element-ui';
 import { checkPhone, checkPwd } from '../../utils/rules';
-import { doLogin } from '../../service/public';
 
 export default {
   name: 'Login',
@@ -58,24 +57,15 @@ export default {
     validateLogin() {
       this.$refs.login.validate((valid) => {
         if (valid) {
-          this.goLogin();
+          const { phone, password } = this.login;
+          this.$store.dispatch('account/doLogin', { phone, password, el: '.btn-login' }).then(() => {
+            Message.success('登录成功');
+            this.$emit('update:show', false);
+            this.$refs.login.resetFields();
+          });
         }
       });
     },
-    async goLogin() {
-      const { phone, password } = this.login;
-      const res = await doLogin({ phone, password }, { el: '.btn-login' });
-      if (res) {
-        this.$store.dispatch('setLoginStatus', { phone }).then(() => {
-          Message.success('登录成功');
-          this.$emit('update:show', false);
-          this.$refs.login.resetFields();
-        });
-      }
-    },
-  },
-  created() {
-
   },
 };
 </script>

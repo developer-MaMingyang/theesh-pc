@@ -25,21 +25,16 @@
 </template>
 
 <script>
-import { getSidebarList } from '../../service/sidebar';
+import { mapState } from 'vuex';
 
 export default {
   name: 'SideBar',
-  data() {
-    return {
-      list: [],
-    };
-  },
+  computed: mapState('course/sidebar', {
+    list: ({ sidebarList }) => sidebarList,
+  }),
   methods: {
-    async getData() {
-      const { data } = await getSidebarList({
-        el: '.item-wrap',
-      });
-      this.list = data;
+    getData() {
+      this.$store.dispatch('course/sidebar/getSidebarList', { el: '.item-wrap' });
     },
   },
   mounted() {

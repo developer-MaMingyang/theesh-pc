@@ -20,6 +20,9 @@ module.exports = {
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
+  externals:[
+    require('webpack-require-http')
+  ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {

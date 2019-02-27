@@ -1,23 +1,21 @@
 /*
 * author: mamingyang@baofeng.com
-* date: 2018/10/25
+* date: 2019/2/27
 */
-
 import Vue from 'vue';
 import vuex from 'vuex';
-import actions from './actions';
-import mutations from './mutations';
+import global from './global';
+import account from './account';
+import course from './course';
 
 Vue.use(vuex);
 
-const state = {
-  userInfo: {},
-};
-
 const store = new vuex.Store({
-  state,
-  actions,
-  mutations,
+  modules: {
+    global,
+    account,
+    course,
+  },
 });
 
 export default store;

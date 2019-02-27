@@ -5,10 +5,10 @@
 */
 
 <template>
-  <div class="wrap-box">
+  <div class="wrap-box course-detail">
     <div class="desc clearfix">
       <div class="fl img-wrap">
-        <img :src="detail.coursePhoto" alt="加载失败">
+        <img :src="detail.coursePhoto">
       </div>
       <div class="fl">
         <h3 v-text="detail.courseName"></h3>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { getCourseDetail } from '../../service/course-detail';
+import { mapState } from 'vuex';
 
 export default {
   name: 'CourseDetail',
@@ -42,9 +42,6 @@ export default {
   data() {
     return {
       loaded: false,
-      detail: {
-        lessons: [],
-      },
       video: {
         title: '',
         coverImg: '',
@@ -52,18 +49,17 @@ export default {
       },
     };
   },
+  computed: mapState('course/detail', ['detail']),
   methods: {
-    async getData() {
+    getData() {
       const { id } = this.$route.params;
       if (!id) {
         window.location.href = document.referrer;
         return;
       }
-      const { data } = await getCourseDetail({
-        courseId: id,
+      this.$store.dispatch('course/detail/getDetail', { courseId: id, el: '.course-detail' }).then(() => {
+        this.loaded = true;
       });
-      this.loaded = true;
-      this.detail = data;
     },
     openVideo(item) {
       const { lessonName, coverUrl, videoId } = item;
@@ -74,6 +70,9 @@ export default {
   },
   mounted() {
     this.getData();
+  },
+  destroyed() {
+    this.$store.commit('course/detail/setDetail', null);
   },
 };
 </script>

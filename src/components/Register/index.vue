@@ -37,7 +37,6 @@
 <script>
 import { Message } from 'element-ui';
 import { checkPhone, checkMsgVc, checkPwd } from '../../utils/rules';
-import { doRegister } from '../../service/public';
 
 export default {
   name: 'Register',
@@ -75,26 +74,13 @@ export default {
       });
     },
     async goRegister() {
-      const { phone, msgVc, password } = this.register;
-      const res = await doRegister({
-        phone,
-        password,
-        code: msgVc,
-      }, { el: '.btn-register' });
-      if (res) {
-        this.$store.dispatch('setLoginStatus', { phone }).then(() => {
-          Message.success(res.message);
-          this.$emit('update:show', false);
-          this.$refs.register.resetFields();
-        });
-      }
+      const { phone, msgVc: code, password } = this.register;
+      this.$store.dispatch('account/doRegister', { phone, password, code, el: '.btn-register' }).then(({ message }) => {
+        Message.success(message);
+        this.$emit('update:show', false);
+        this.$refs.register.resetFields();
+      });
     },
-    refreshImgVc() {
-      this.imgVc = `https://8.baofeng.com/mimosa/client/captcha/getimgvc?t=${new Date().getTime()}`;
-    },
-  },
-  created() {
-    this.refreshImgVc();
   },
 };
 </script>

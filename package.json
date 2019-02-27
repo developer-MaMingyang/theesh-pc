@@ -1,8 +1,8 @@
 {
   "name": "theesh-pc",
   "version": "1.0.0",
-  "description": "A project developed by Ma Mingyang.",
-  "author": "poet <mamingyang@baofeng.com>",
+  "description": "TheeshPc",
+  "author": "poet-CN <mamingyang@baofeng.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -18,7 +18,8 @@
     "nprogress": "^0.2.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "webpack-require-http": "^0.4.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

@@ -16,8 +16,6 @@
 </template>
 
 <script>
-import { sendVc } from '../../service/public';
-
 export default {
   name: 'VerifyCode',
   props: ['type', 'phone', 'disableBtn', 'np'],
@@ -51,26 +49,36 @@ export default {
         }
       }
       // 结束
-      await sendVc({
-        phone: this.phone,
-        type: this.type,
-      });
       this.sending = true;
-      this.$message({
-        type: 'success',
-        message: '验证码已发放，请注意查收',
-      });
       let time = 120;
       this.text = `重新获取(${time})`;
       const j = setInterval(() => {
         if (time > 0) {
-          this.text = `重新获取(${time--})`;
+          time--;
+          this.text = `重新获取(${time})`;
         } else {
           this.text = '获取验证码';
           this.sending = false;
           clearInterval(j);
         }
       }, 1000);
+      this.$store.dispatch('global/sendVc', {
+        phone: this.phone,
+        type: this.type,
+      }).then(() => {
+        this.$message({
+          type: 'success',
+          message: '验证码已发放，请注意查收',
+        });
+      }).catch((message) => {
+        this.$message({
+          type: 'error',
+          message,
+        });
+        this.text = '获取验证码';
+        this.sending = false;
+        clearInterval(j);
+      });
     },
   },
 };

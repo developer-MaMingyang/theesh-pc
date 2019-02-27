@@ -10,7 +10,6 @@
 
 <script>
 import { getPlayAuth } from '../../service/play';
-import './aliplayer-flash.min';
 
 export default {
   name: 'VideoPlayer',
@@ -26,10 +25,10 @@ export default {
   },
   methods: {
     async getAuth() {
+      await require('https://g.alicdn.com/de/prismplayer/2.8.1/skins/default/aliplayer-min.css'); // eslint-disable-line
+      await require('https://g.alicdn.com/de/prismplayer/2.8.1/aliplayer-min.js'); // eslint-disable-line
       if (!this.videoId) {
-        setTimeout(() => {
-          this.getAuth();
-        }, 500);
+        this.getAuth();
         return;
       }
       const { data } = await getPlayAuth({

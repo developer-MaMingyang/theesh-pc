@@ -5,7 +5,8 @@
 
 import { $post } from '../utils/request';
 
-export const getCourseDetail = async ({ courseId }) => $post({
+export const getCourseDetail = async ({ courseId, el }) => $post({
   url: '/lesson/findByCourseId',
   data: { courseId },
+  el,
 });

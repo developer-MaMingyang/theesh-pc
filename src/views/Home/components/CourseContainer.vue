@@ -8,7 +8,7 @@
     <div class="item-wrap">
       <TitleBar>热门课程</TitleBar>
       <div class="list">
-        <el-card class="item bgcWhi mb20" shadow="hover" v-for="(item, index) in list" :key="index">
+        <el-card class="item bgcWhi mb20" shadow="hover" v-for="(item, index) in homeCourses" :key="index">
           <router-link :to="{name: 'CourseDetail', params: {id: item.id}}">
             <div class="clearfix">
               <div class="df fl img-wrap">
@@ -21,7 +21,7 @@
             </div>
           </router-link>
         </el-card>
-        <div v-if="loaded && !list.length">
+        <div v-if="loaded && !homeCourses.length">
           <p class="mt65 tc">暂无数据</p>
         </div>
       </div>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { getCourses } from '../../../service/home';
+import { mapState } from 'vuex';
 
 export default {
   name: 'CourseContainer',
@@ -40,16 +40,14 @@ export default {
   data() {
     return {
       loaded: false,
-      list: [],
     };
   },
+  computed: mapState('course/home', ['homeCourses']),
   methods: {
-    async getData() {
-      const { data } = await getCourses({
-        el: '.list',
+    getData() {
+      this.$store.dispatch('course/home/getCourses', { el: '.list' }).then(() => {
+        this.loaded = true;
       });
-      this.loaded = true;
-      this.list = data;
     },
   },
   mounted() {

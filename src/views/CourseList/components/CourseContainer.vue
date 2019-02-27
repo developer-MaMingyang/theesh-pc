@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { getCourseList } from '../../../service/course-list';
+import { mapState } from 'vuex';
 
 export default {
   name: 'CourseContainer',
@@ -40,7 +40,6 @@ export default {
   data() {
     return {
       loaded: false,
-      list: [],
     };
   },
   watch: {
@@ -48,16 +47,17 @@ export default {
       this.getData();
     },
   },
+  computed: mapState('course/courseList', ['list']),
   methods: {
-    async getData() {
+    getData() {
       const { id, title } = this.$route.query;
       if (!id || !title) {
         this.$router.push('/');
         return;
       }
-      const { data } = await getCourseList({ id, el: '.list' });
-      this.list = data;
-      this.loaded = true;
+      this.$store.dispatch('course/courseList/getCourseList', { id, el: '.list' }).then(() => {
+        this.loaded = true;
+      });
     },
   },
   created() {

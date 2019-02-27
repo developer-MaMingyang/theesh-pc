@@ -8,7 +8,7 @@ import { Message } from 'element-ui';
 
 // checkErrorCode: ajax全局校验码
 export const checkErrorCode = ({ code, message }, ignore) => {
-  if (!code || code === ignore) {
+  if (!code || code === ignore || ignore === 'all') {
     return true;
   }
   Message.error(`${message}(${code})`);

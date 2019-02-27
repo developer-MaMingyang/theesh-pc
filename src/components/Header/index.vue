@@ -36,7 +36,6 @@
 import { mapState } from 'vuex';
 import { Message } from 'element-ui';
 import logo from '../../assets/img/public/logo-top.png';
-import { doLogout } from '../../service/public';
 
 export default {
   name: 'Header',
@@ -45,7 +44,7 @@ export default {
     Register: () => import('../Register'),
   },
   computed: {
-    ...mapState(['userInfo']),
+    ...mapState('global', ['userInfo']),
   },
   data() {
     return {
@@ -60,16 +59,10 @@ export default {
   },
   methods: {
     async logout() {
-      doLogout({
-        el: '.account-wrap',
-      }).then(() => {
-        this.$store.dispatch('doLogout');
+      this.$store.dispatch('account/doLogout').then(() => {
         Message.success('您已安全退出登录');
       });
     },
-  },
-  created() {
-
   },
 };
 </script>
