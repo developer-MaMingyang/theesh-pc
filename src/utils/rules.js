@@ -8,7 +8,7 @@ export const checkPhone = (rule, value, callback) => {
   if (value === '') {
     callback(new Error('请输入手机号'));
   }
-  if (!(/^1[34578]\d{9}$/.test(value))) {
+  if (!(/^(0|86|17951)?(1[3456789][0-9])[0-9]{8}$/.test(value))) {
     callback(new Error('请输入正确的手机号'));
     return false;
   }
