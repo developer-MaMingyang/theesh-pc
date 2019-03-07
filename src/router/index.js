@@ -27,6 +27,10 @@ const router = new Router({
       name: 'Play',
       component: () => import('@/views/Play'),
     },
+    {
+      path: '*',
+      redirect: { name: 'Home' },
+    }
   ],
 });
 
