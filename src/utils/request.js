@@ -121,11 +121,11 @@ export const $post = ({ url, params, data, ignore, el }) => new Promise((resolve
     }),
   }).then((res) => {
     if (!res) return;
-    const {data, status} = res;
+    const {data: result, status} = res;
     if (status !== 200) return;
     if (sending) sending.close();
-    if (checkErrorCode(data, ignore)) {
-      resolve(data);
+    if (checkErrorCode(result, ignore)) {
+      resolve(result);
     }
   });
 });
