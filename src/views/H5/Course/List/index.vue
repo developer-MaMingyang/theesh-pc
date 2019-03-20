@@ -18,37 +18,37 @@
 </template>
 
 <script>
-    import { mapState } from 'vuex';
+import { mapState } from 'vuex';
 
-    export default {
-        name: 'CourseList',
-        components: {
-            VideoPlayer: () => import('../../../../components/H5VideoPlayer/index'),
-        },
-        data: () => ({
+export default {
+  name: 'CourseList',
+  components: {
+    VideoPlayer: () => import('../../../../components/H5VideoPlayer/index'),
+  },
+  data: () => ({
 
-        }),
-        computed: {
-            ...mapState('h5/course/list', ['courseName', 'coursePhoto', 'lessons', 'currentPlaying']),
-            ...mapState('h5/global', ['source']),
-        },
-        created() {
-          const { courseId } = this.$route.params;
-            this.getList(courseId);
-        },
-        destroyed() {
-            this.$store.dispatch('h5/course/list/reset');
-        },
-        methods: {
-            getList(courseId) {
-                this.$store.dispatch('h5/course/list/getList', { courseId });
-            },
-            selectLesson(index) {
-                this.$store.dispatch('h5/course/list/selectLesson', { index });
-                window.scrollTo(0, 0);
-            },
-        },
-    };
+  }),
+  computed: {
+    ...mapState('h5/course/list', ['courseName', 'coursePhoto', 'lessons', 'currentPlaying']),
+    ...mapState('h5/global', ['source']),
+  },
+  created() {
+    const { courseId } = this.$route.params;
+    this.getList(courseId);
+  },
+  destroyed() {
+    this.$store.dispatch('h5/course/list/reset');
+  },
+  methods: {
+    getList(courseId) {
+      this.$store.dispatch('h5/course/list/getList', { courseId });
+    },
+    selectLesson(index) {
+      this.$store.dispatch('h5/course/list/selectLesson', { index });
+      window.scrollTo(0, 0);
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

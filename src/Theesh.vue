@@ -38,7 +38,7 @@ export default {
       this.minHeight = `${document.documentElement.clientHeight - 300}px`;
     },
   },
-  created() {
+  mounted() {
     if (this.$route.query.source !== 'app') {
       this.hfVisible = true;
     }
