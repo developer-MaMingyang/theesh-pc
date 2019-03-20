@@ -1,10 +1,10 @@
 <template>
   <el-container direction="vertical">
-    <Header/>
+    <Header v-if="!$route.query.source === 'app'" />
     <div :style="{minHeight}">
       <router-view/>
     </div>
-    <Footer/>
+    <Footer v-if="!$route.query.source === 'app'" />
   </el-container>
 </template>
 
