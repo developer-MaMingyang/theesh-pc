@@ -1,10 +1,10 @@
 <template>
   <el-container direction="vertical">
-    <Header v-if="!$route.query.source === 'app'" />
+    <Header v-if="hfVisible" />
     <div :style="{minHeight}">
       <router-view/>
     </div>
-    <Footer v-if="!$route.query.source === 'app'" />
+    <Footer v-if="hfVisible" />
   </el-container>
 </template>
 
@@ -15,9 +15,17 @@ export default {
     Header: () => import('./components/Header'),
     Footer: () => import('./components/Footer'),
   },
+  watch: {
+    '$route.query.source': function a(nv) {
+      if (nv !== 'app') {
+        this.hfVisible = true;
+      }
+    },
+  },
   data() {
     return {
       minHeight: '0',
+      hfVisible: false,
     };
   },
   methods: {
@@ -31,6 +39,9 @@ export default {
     },
   },
   created() {
+    if (this.$route.query.source !== 'app') {
+      this.hfVisible = true;
+    }
     this.setMinHeight();
     this.listenResize();
   },
