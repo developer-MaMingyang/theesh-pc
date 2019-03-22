@@ -24,6 +24,11 @@ export default {
       }
     },
   },
+  mounted() {
+    if (this.$route.query.source) {
+      this.$store.dispatch('h5/global/setSource', { source: this.$route.query.source });
+    }
+  },
 };
 </script>
 

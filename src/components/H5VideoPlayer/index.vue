@@ -25,7 +25,7 @@ export default {
       player: null,
     };
   },
-  computed: mapState('global', ['source']),
+  computed: mapState('h5/global', ['source']),
   watch: {
     videoId() {
       this.player.dispose();
