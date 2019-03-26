@@ -3,7 +3,7 @@
 > A project developed by Ma Mingyang.
 
 ## Particular attention
-1、This project has started the strict mode. It has used 'eslint';
+1、This project has started the strict mode. It has used 'eslint(airbnb)';
 2、This project uses 'yarn' instead of 'npm';
 3、It is not recommended to use 'css' in this project. 'Scss' is recommended;
 

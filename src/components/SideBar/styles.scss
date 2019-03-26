@@ -1,0 +1,28 @@
+.sidebar {
+  flex: 1;
+  .item-wrap {
+    min-width: 235px;
+    min-height: 150px;
+    .container {
+      width: 235px;
+      img {
+        width: 15px;
+        height: 15px;
+      }
+      .link-wrap {
+        margin-left: -8px;
+        .little-link {
+          display: inline-block;
+          padding: 2px 8px;
+          margin-bottom: 5px;
+          color: #303133;
+          transition: all .3s;
+          &:hover, &.active {
+            background-color: #67c23a;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+}

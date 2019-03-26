@@ -1,13 +1,35 @@
-import Vue from 'vue'
-import Theesh from './Theesh'
-import router from './router'
+import Vue from 'vue';
+import 'normalize.css';
+import 'babel-polyfill';
+import NProgress from 'nprogress';
+import 'nprogress/nprogress.css';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.config.productionTip = false
+import store from './store';
+import router from './router';
+
+Vue.use(ElementUI);
+
+Vue.config.productionTip = false;
+
+router.beforeEach((to, from, next) => {
+  NProgress.start();
+  next();
+});
+
+router.afterEach(() => {
+  NProgress.done();
+  window.scrollTo(0, 0);
+});
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#pc',
+  el: '#treesh',
+  store,
   router,
-  components: { Theesh },
-  template: '<Theesh/>'
-})
+  components: {
+    Theesh: () => import('./Theesh'),
+  },
+  template: '<Theesh/>',
+});
