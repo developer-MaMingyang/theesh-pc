@@ -13,6 +13,11 @@ const router = new Router({
       component: () => import('@/views/Home'),
     },
     {
+      path: '/introduce-us',
+      name: 'Introduce',
+      component: () => import('@/views/Introduce'),
+    },
+    {
       path: '/course/list',
       name: 'CourseList',
       component: () => import('@/views/CourseList'),

@@ -35,7 +35,7 @@ export default {
       };
     },
     setMinHeight() {
-      this.minHeight = `${document.documentElement.clientHeight - 300}px`;
+      this.minHeight = `${document.documentElement.clientHeight - 280}px`;
     },
   },
   mounted() {
