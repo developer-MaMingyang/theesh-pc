@@ -16,7 +16,7 @@ export default {
   name: 'CourseList',
   components: {
     SideBar: () => import('../../components/SideBar'),
-    CourseContainer: () => import('./components/CourseContainer'),
+    CourseContainer: () => import('./modules/CourseContainer'),
   },
   data() {
     return {
