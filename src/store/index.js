@@ -8,6 +8,7 @@ import global from './global';
 import account from './account';
 import course from './course';
 import h5 from './h5';
+import offlineStudy from './offlineStudy';
 
 Vue.use(vuex);
 
@@ -17,6 +18,7 @@ const store = new vuex.Store({
     account,
     course,
     h5,
+    offlineStudy,
   },
 });
 

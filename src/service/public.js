@@ -6,24 +6,29 @@
 
 import { $post } from '../utils/request';
 
-export const login = async (data, { el }) => $post({
+export const getUserInfo = (ignore = 'all') => $post({
+  url: '/user/checkLogin',
+  ignore,
+});
+
+export const login = (data, { el }) => $post({
   url: '/user/login',
   data,
   el,
 });
 
-export const logout = async ({ el }) => $post({
+export const logout = ({ el }) => $post({
   url: '/user/logout',
   el,
 });
 
-export const register = async (data, { el }) => $post({
+export const register = (data, { el }) => $post({
   url: '/user/register',
   data,
   el,
 });
 
-export const sendVc = async (data) => $post({
+export const sendVc = (data) => $post({
   url: '/user/sendMessage',
   data,
   ignore: 'all',

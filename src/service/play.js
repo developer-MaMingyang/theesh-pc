@@ -5,7 +5,7 @@
 
 import { $post } from '../utils/request';
 
-export const getPlayAuth = async ({ videoId, el }) => $post({
+export const getPlayAuth = ({ videoId, el }) => $post({
   url: '/lesson/findAuthByVideoId',
   data: { videoId },
   el,

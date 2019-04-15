@@ -6,7 +6,7 @@
 
 import { $post } from '../utils/request';
 
-export const getCourses = async ({ el }) => $post({
+export const getCourses = ({ el }) => $post({
   url: '/course/recommend/query',
   el,
 });

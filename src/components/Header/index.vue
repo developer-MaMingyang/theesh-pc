@@ -19,7 +19,7 @@
       </nav>
       <div class="fr">
         <div class="fz16 lh70 account-wrap fr" v-if="userInfo.phone">
-          <span>您好，{{userInfo.phone}}</span>
+          <span class="ml5">您好，{{userInfo.phone}}</span>
           <span>|</span>
           <span class="cp" @click="logout">安全退出</span>
         </div>
@@ -72,16 +72,20 @@ export default {
     };
   },
   methods: {
-    async logout() {
-      this.$store.dispatch('account/doLogout').then(() => {
+    logout() {
+      this.$store.dispatch('global/doLogout').then(() => {
         Message.success('您已安全退出登录');
       });
+    },
+    getUserInfo() {
+      this.$store.dispatch('global/getUserInfo');
     },
     initQRCode() {
       QRCode.toCanvas(this.$refs.canvas, 'https://www.theesh.com/theesh-android.apk');
     },
   },
   mounted() {
+    this.getUserInfo();
     this.initQRCode();
   },
 };

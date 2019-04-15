@@ -1,0 +1,40 @@
+.list {
+  min-height: 186px;
+  margin-top: 20px;
+  .item {
+    width: 100%;
+    height: 186px;
+    .item-content {
+      width: 565px;
+      padding: 33px 14px 22px 20px;
+      .title {
+        width: 270px;
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 10px;
+      }
+      .summary {
+        position: relative;
+        font-size: 14px;
+        line-height: 20px;
+        opacity: 0.6;
+      }
+    }
+    .contact {
+      width: 300px;
+      margin-top: 70px;
+    }
+    .fl {
+      height: 186px;
+    }
+    .img-wrap {
+      width: 330px;
+      align-items: center;
+      justify-content: center;
+      img {
+        max-width: 240px;
+        max-height: 135px;
+      }
+    }
+  }
+}
