@@ -5,6 +5,7 @@
 
 <template>
   <div class="wrap-box">
+    <p class="tc note">  目前招聘的老师只服务于北京地区，其他地区以后会陆续开放，敬请期待。老师应聘请投简历到business@theesh.com</p>
     <div class="list">
       <el-card class="item bgcWhi mb20" shadow="hover" v-for="(item, index) in teachers" :key="index">
         <div class="clearfix">
@@ -19,7 +20,7 @@
             </div>
           </div>
           <div class="fl contact">
-            <el-button type="primary" @click="openContactDialog(index)">联系</el-button>
+            <el-button class="contact-button" type="primary" @click="openContactDialog(index)">联系</el-button>
           </div>
         </div>
       </el-card>
@@ -59,32 +60,32 @@ export default {
       photo: Teacher1,
       name: '贺**',
       desc: '四川音乐学院  钢琴专业',
-      course: '钢琴或者小提琴',
+      course: '钢琴',
     }, {
       photo: Teacher2,
       name: '杨**',
       desc: '意大利米兰音乐学院 即兴伴奏专业',
-      course: '钢琴或者小提琴',
+      course: '钢琴',
     }, {
       photo: Teacher3,
       name: '杨**',
       desc: '山西师范大学 音乐学专业',
-      course: '钢琴或者小提琴',
+      course: '钢琴',
     }, {
       photo: Teacher4,
       name: '李**',
       desc: '沈阳音乐学院 音乐教育',
-      course: '钢琴或者小提琴',
+      course: '钢琴',
     }, {
       photo: Teacher5,
       name: '彭**',
       desc: '台湾黄钟小提琴教学法认证老师',
-      course: '钢琴或者小提琴',
+      course: '小提琴',
     }, {
       photo: Teacher6,
       name: '李**',
       desc: '四川音乐学院 小提琴专业',
-      course: '钢琴或者小提琴',
+      course: '小提琴',
     }],
   }),
   created() {
