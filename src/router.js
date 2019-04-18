@@ -38,8 +38,9 @@ const router = new Router({
       component: () => import('@/views/Play'),
     },
     {
-      path: '*',
-      redirect: { name: 'Home' },
+      path: '/download',
+      name: 'Download',
+      component: () => import('@/views/Download'),
     },
     {
       path: '/h5',
@@ -55,7 +56,11 @@ const router = new Router({
           component: () => import('@/views/H5/Course/List'),
         }]
       }],
-    }
+    },
+    {
+      path: '*',
+      redirect: { name: 'Home' },
+    },
   ],
 });
 

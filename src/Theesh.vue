@@ -16,10 +16,8 @@ export default {
     Footer: () => import('./components/Footer'),
   },
   watch: {
-    '$route.query.source': function a(nv) {
-      if (nv !== 'app') {
-        this.hfVisible = true;
-      }
+    $route: function a(nv) {
+      this.checkHfVisible(nv);
     },
   },
   data() {
@@ -37,11 +35,20 @@ export default {
     setMinHeight() {
       this.minHeight = `${document.documentElement.clientHeight - 280}px`;
     },
+    checkHfVisible(route) {
+      if (route.query.source === 'app') {
+        this.hfVisible = false;
+      } else if (route.query.hfVisible) {
+        this.hfVisible = false;
+      } else if (route.path === '/download') {
+        this.hfVisible = false;
+      } else {
+        this.hfVisible = true;
+      }
+    },
   },
   mounted() {
-    if (this.$route.query.source !== 'app') {
-      this.hfVisible = true;
-    }
+    this.checkHfVisible(this.$route);
     this.setMinHeight();
     this.listenResize();
   },
