@@ -5,9 +5,18 @@
 */
 
 <template>
-  <div class="wrap-box mt42 df">
-    <SideBar/>
-    <CourseContainer/>
+  <div>
+    <div class="wrap-box df pr">
+      <div class="f1">
+        <div class="sidebar-wrapper">
+          <SideBar />
+        </div>
+      </div>
+      <div class="f3">
+        <Banner />
+        <CourseContainer />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -16,6 +25,7 @@ export default {
   name: 'Home',
   components: {
     SideBar: () => import('../../components/SideBar'),
+    Banner: () => import('./modules/Banner'),
     CourseContainer: () => import('./modules/CourseContainer'),
   },
   data() {
@@ -29,5 +39,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  .sidebar-wrapper {
+    position: fixed;
+    top: 132px;
+  }
 </style>

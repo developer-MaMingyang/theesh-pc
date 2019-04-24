@@ -6,7 +6,9 @@
 
 <template>
   <div class="wrap-box mt42 df">
-    <SideBar/>
+    <div class="f1">
+      <SideBar/>
+    </div>
     <CourseContainer />
   </div>
 </template>
