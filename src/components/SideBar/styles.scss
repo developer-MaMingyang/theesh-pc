@@ -2,6 +2,9 @@
   .item-wrap {
     min-width: 235px;
     min-height: 150px;
+    &>div:not(:last-child) {
+      margin-bottom: 40px;
+    }
     .container {
       width: 235px;
       img {
@@ -13,7 +16,7 @@
         .little-link {
           display: inline-block;
           padding: 2px 8px;
-          margin-bottom: 5px;
+          line-height: 25px;
           color: #303133;
           transition: all .3s;
           &:hover, &.active {

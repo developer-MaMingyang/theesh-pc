@@ -7,7 +7,7 @@
 <template>
   <div class="sidebar">
     <div class="item-wrap">
-      <el-card class="container bgcWhi p20 mb20" shadow="hover" v-for="(item, index) in list" :key="index">
+      <el-card class="container bgcWhi p20" shadow="hover" v-for="(item, index) in list" :key="index">
         <div class="fz16 mb10">
           <img :src="item.catPhoto">
           <span>{{item.chnName}}</span>

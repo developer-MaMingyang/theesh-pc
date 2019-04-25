@@ -25,7 +25,7 @@
         </div>
       </el-card>
     </div>
-    <el-dialog :close-on-click-modal="false" :close-on-press-escape="false" :visible.sync="dialogVisible" :title="`联系${teachers[contactForm.tId].name.substr(0, 1)}老师`" custom-class="w400 contact-form">
+    <el-dialog :close-on-click-modal="false" :close-on-press-escape="false" :visible.sync="dialogVisible" title="填写联系方式，请注意接听电话" custom-class="w400 contact-form">
       <el-form :model="contactForm">
         <el-form-item label="姓名">
           <el-input v-model="contactForm.name"></el-input>
