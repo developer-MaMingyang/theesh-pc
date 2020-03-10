@@ -81,7 +81,7 @@ export default {
       this.$store.dispatch('global/getUserInfo');
     },
     initQRCode() {
-      QRCode.toCanvas(this.$refs.canvas, 'https://www.theesh.com/download');
+      QRCode.toCanvas(this.$refs.canvas, 'http://www.theesh.com/download');
     },
   },
   mounted() {
