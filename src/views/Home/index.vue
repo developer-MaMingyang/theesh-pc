@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="f3">
-        <Banner />
+<!--        <Banner />-->
         <CourseContainer />
       </div>
     </div>

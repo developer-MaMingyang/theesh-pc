@@ -12,11 +12,11 @@ const router = new Router({
       name: 'Home',
       component: () => import('@/views/Home'),
     },
-    {
+    /*{
       path: '/offline-study',
       name: 'OfflineStudy',
       component: () => import('@/views/OfflineStudy'),
-    },
+    },*/
     {
       path: '/introduce-us',
       name: 'Introduce',
